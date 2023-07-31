@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newfigma/beverages/beverages.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';
 
@@ -122,22 +123,27 @@ class _SearchState extends State<Search> {
             const SizedBox(height: 15,),
             Row(
               children: [
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightGreen,
-                    border: Border.all(color: ColorConstant.backgound),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p5.png'),height: 100,),
-                        SizedBox(height: 10),
-                        Text('Beverages',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
+                GestureDetector(
+                  onTap: () {
+                    Get.to(const Beverages());
+                  },
+                  child: Container(
+                    height: height*0.24,
+                    width: width*0.44,
+                    decoration: BoxDecoration(
+                      color: ColorConstant.extralightGreen,
+                      border: Border.all(color: ColorConstant.backgound),
+                      borderRadius: BorderRadius.circular(14)
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Column(
+                        children: [
+                          Image(image: AssetImage('assets/images/p5.png'),height: 100,),
+                          SizedBox(height: 10),
+                          Text('Beverages',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
+                        ],
+                      ),
                     ),
                   ),
                 ),

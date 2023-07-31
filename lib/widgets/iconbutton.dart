@@ -14,7 +14,7 @@ class IconButtonWidget extends StatelessWidget {
   final double? height;
 
   const IconButtonWidget({super.key, 
-    Key? key, // Correct the parameter name
+     // Correct the parameter name
     required this.onPressed,
     required this.text,
     required this.backgroundColor,

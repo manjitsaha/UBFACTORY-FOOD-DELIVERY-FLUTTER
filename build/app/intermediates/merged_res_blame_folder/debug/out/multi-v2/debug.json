@@ -304,7 +304,7 @@
             "outputFile": "com.example.newfigma.app-merged_res-11:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Dell\\Downloads\\food\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\Dell\\Downloads\\food\\New folder\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -1267,7 +1267,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Dell\\Downloads\\food\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\Dell\\Downloads\\food\\New folder\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

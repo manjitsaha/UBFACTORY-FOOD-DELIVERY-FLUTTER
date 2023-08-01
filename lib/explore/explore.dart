@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newfigma/beverages/beverages.dart';
 import 'package:newfigma/core/constant/color.dart';
-import 'package:newfigma/search/search.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -32,7 +31,7 @@ class _ExploreState extends State<Explore> {
           children: [
            GestureDetector(
             onTap: () {
-              Get.to(const Search());
+              Get.toNamed(AppRoutes.search);
             },
              child: Container(
               height: height*0.06,width: width*0.9,
@@ -146,7 +145,7 @@ class _ExploreState extends State<Explore> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(const Beverages());
+                    Get.toNamed(AppRoutes.beverages);
                   },
                   child: Container(
                     height: height*0.24,

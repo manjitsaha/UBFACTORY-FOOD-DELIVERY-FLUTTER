@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newfigma/cart/cart.dart';
 import 'package:newfigma/explore/explore.dart';
 import 'package:newfigma/favourite/favourite.dart';
+import 'package:newfigma/profile/profile.dart';
 
 import '../core/constant/color.dart';
 import 'home.dart';
@@ -41,7 +42,8 @@ class _TabHomeState extends State<TabHome> with SingleTickerProviderStateMixin {
                   HomeScreen(),
                   Explore(),
                   Cart(),
-                  Favourite()
+                  Favourite(),
+                  Profile()
                 ],
               ),
             ),

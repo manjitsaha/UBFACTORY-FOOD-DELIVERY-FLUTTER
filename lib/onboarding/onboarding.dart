@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
-import 'package:newfigma/signIn/SignIn.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/button.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -23,7 +23,7 @@ class _OnBoardingState extends State<OnBoarding> {
           Text('Get your groceries in as fast as one hour',style: TextStyle(color: ColorConstant.white,fontSize: 16),),
           const SizedBox(height: 30,),
           ButtonWidget(onPressed: (){
-            Get.to(const SignIn());
+            Get.toNamed(AppRoutes.signIn);
           },
            text: 'Get Started',
             backgroundColor: ColorConstant.lightGreen, 

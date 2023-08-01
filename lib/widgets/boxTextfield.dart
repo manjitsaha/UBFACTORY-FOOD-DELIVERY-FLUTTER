@@ -4,20 +4,31 @@ import 'package:get/get.dart';
 import '../core/constant/color.dart';
 
 class BoxTextField extends StatelessWidget {
-  const BoxTextField({super.key, required this.hint, this.prefixIcon, this.suffixIcon});
+  const BoxTextField({
+    super.key,
+    required this.hint,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.width,
+    this.height,
+  });
+
   final String hint;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
-    double width = Get.width;
-    double height = Get.height;
+    double finalWidth = width ?? Get.width * 0.9;
+    double finalHeight = height ?? Get.height * 0.062;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(5, 10, 5, 5),
       child: Container(
-        width: width * 0.9,
-        height: height * 0.062,
+        width: finalWidth,
+        height: finalHeight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: ColorConstant.white,
@@ -31,7 +42,13 @@ class BoxTextField extends StatelessWidget {
             fillColor: Colors.grey,
             hintStyle: const TextStyle(fontWeight: FontWeight.w800),
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-            suffixIcon: suffixIcon != null ? Icon(suffixIcon,color: ColorConstant.black,size: 30,) : null, // Display the prefix icon if provided
+            suffixIcon: suffixIcon != null
+                ? Icon(
+                    suffixIcon,
+                    color: ColorConstant.black,
+                    size: 30,
+                  )
+                : null, // Display the prefix icon if provided
           ),
         ),
       ),

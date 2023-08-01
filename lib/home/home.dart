@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newfigma/Product/product.dart';
+import 'package:newfigma/Product/FoodDetail.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';

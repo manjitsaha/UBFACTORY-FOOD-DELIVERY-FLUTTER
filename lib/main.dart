@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'onboarding/onboarding.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: const OnBoarding()
+      initialRoute: AppRoutes.splashScreen,
+      getPages: AppRoutes.pages,
     );
   }
 }

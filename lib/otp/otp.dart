@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/style/style.dart';
-import 'package:newfigma/location/location.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/textfield.dart';
 
 import '../core/constant/color.dart';
@@ -36,7 +36,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   children: [
                     Text('Resend Code',style: TextStyle(fontSize: 18,color: ColorConstant.backgound),),
                     FloatingActionButton(onPressed: (){
-                      Get.to(const Location());
+                      Get.toNamed(AppRoutes.location);
                 },
                 elevation: 0,
                 backgroundColor: ColorConstant.backgound,

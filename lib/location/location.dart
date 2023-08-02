@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
-import 'package:newfigma/login/login.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/button.dart';
 
 import '../widgets/dropdown.dart';
@@ -42,7 +42,7 @@ class _LocationState extends State<Location> {
              onChanged: (value){print(('Selected option: $value'));}),
              const SizedBox(height: 24,),
              ButtonWidget(onPressed: (){
-              Get.to(const LogIn());
+              Get.toNamed(AppRoutes.login);
              },
               text: 'Submit',
                backgroundColor: ColorConstant.backgound, 

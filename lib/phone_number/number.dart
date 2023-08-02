@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
-import 'package:newfigma/otp/otp.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/flagtexfiled.dart';
 
 class Phone extends StatefulWidget {
@@ -33,7 +33,7 @@ class _PhoneState extends State<Phone> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(280, 100, 30, 50),
                 child: FloatingActionButton(onPressed: (){
-                  Get.to(const OTPScreen());
+                  Get.toNamed(AppRoutes.otp);
                 },
                 backgroundColor: ColorConstant.backgound,
                 child:const Icon(Icons.arrow_forward_ios) ,

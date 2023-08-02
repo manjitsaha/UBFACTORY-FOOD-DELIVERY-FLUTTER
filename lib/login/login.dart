@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
-import 'package:newfigma/home/hometab.dart';
-import 'package:newfigma/signup/signup.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/button.dart';
 import 'package:newfigma/widgets/textfield.dart';
 
@@ -38,8 +37,8 @@ class _LogInState extends State<LogIn> {
               ),
               const SizedBox(height: 25,),
               ButtonWidget(onPressed:(){
-                Get.to(const TabHome());
-              } ,
+                Get.toNamed(AppRoutes.tabhome);
+              },
                text: 'Log In', backgroundColor: ColorConstant.backgound, 
                textColor: ColorConstant.white),
                const SizedBox(height: 20,),
@@ -48,7 +47,7 @@ class _LogInState extends State<LogIn> {
                 const Text("Dont't have an account?"),
                 GestureDetector(
                 onTap: (){
-                  Get.to(const SignUp());
+                  Get.toNamed(AppRoutes.signup);
                 },
                 child: Text('SignUp',style: TextStyle(color: ColorConstant.backgound),)
                 )

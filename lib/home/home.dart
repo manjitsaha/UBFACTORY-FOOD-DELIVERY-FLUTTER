@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:newfigma/Product/FoodDetail.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -97,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(width: 10,),
                       GestureDetector(
                         onTap: (){
-                          Get.to(const Product());
+                          Get.toNamed(AppRoutes.product);
                         },
                         child: Container(
                           height: height*0.28,

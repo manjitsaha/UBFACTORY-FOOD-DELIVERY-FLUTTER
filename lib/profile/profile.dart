@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
+import 'package:newfigma/subscription/subscription.dart';
 import 'package:newfigma/widgets/button.dart';
 import 'package:newfigma/widgets/icon_text.dart';
 
@@ -49,9 +51,15 @@ class _ProfileState extends State<Profile> {
               const Divider(thickness: 2,),
               const IconTextWidget(text: 'Notification', icon: Icons.arrow_forward_ios, icon1: Icons.notifications_outlined,),
               const Divider(thickness: 2,),
+              GestureDetector(
+              onTap: () {
+                Get.to(const Subscription());
+              },
+              child: const IconTextWidget(text: 'Subscription', icon: Icons.arrow_forward_ios, icon1: Icons.subscriptions_outlined,)),
+              const Divider(thickness: 2,),
               const IconTextWidget(text: 'About', icon: Icons.arrow_forward_ios, icon1: Icons.info_outline,),
               const Divider(thickness: 2,),
-              const SizedBox(height: 80,),
+              const SizedBox(height: 50,),
               ButtonWidget(onPressed: (){},
                text: 'Log Out',
                backgroundColor: const Color.fromARGB(255, 235, 233, 233), textColor: ColorConstant.backgound)

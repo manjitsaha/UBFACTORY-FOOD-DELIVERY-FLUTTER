@@ -31,7 +31,7 @@ class _PhoneState extends State<Phone> {
               const Text('Mobile Number'),
               const FlagTextfieldWidget(hint: '+91'),
               Padding(
-                padding: const EdgeInsets.fromLTRB(280, 100, 30, 50),
+                padding: const EdgeInsets.fromLTRB(250, 100, 30, 50),
                 child: FloatingActionButton(onPressed: (){
                   Get.toNamed(AppRoutes.otp);
                 },

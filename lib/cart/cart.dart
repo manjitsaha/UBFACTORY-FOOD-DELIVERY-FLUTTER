@@ -29,7 +29,7 @@ class _CartState extends State<Cart> {
                 const Divider(thickness: 2,),
                 const SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
                       const Image(image: AssetImage('assets/images/c1.png')),
@@ -58,11 +58,11 @@ class _CartState extends State<Cart> {
                 const Divider(thickness: 2,),
                 const SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 15, 5, 15),
+                  padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
                   child: Row(
                     children: [
                       const Image(image: AssetImage('assets/images/c2.png')),
-                      const SizedBox(width: 20,),
+                      const SizedBox(width: 15,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                         Text('Idli',style: Style.smallHead),
@@ -87,11 +87,11 @@ class _CartState extends State<Cart> {
                 const Divider(thickness: 2,),
                 const SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
+                  padding: const EdgeInsets.fromLTRB(5, 15, 15, 15),
                   child: Row(
                     children: [
                       const Image(image: AssetImage('assets/images/home2.png')),
-                      const SizedBox(width: 20,),
+                      const SizedBox(width: 10,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                         Text('Bonda',style: Style.smallHead),
@@ -120,7 +120,7 @@ class _CartState extends State<Cart> {
                   child: Row(
                     children: [
                       const Image(image: AssetImage('assets/images/home3.png')),
-                      const SizedBox(width: 20,),
+                      const SizedBox(width: 15,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                         Text('Dosa',style: Style.smallHead),

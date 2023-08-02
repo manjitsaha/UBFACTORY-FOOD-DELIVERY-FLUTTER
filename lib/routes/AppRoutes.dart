@@ -18,6 +18,7 @@ import 'package:newfigma/search/search.dart';
 import 'package:newfigma/signIn/SignIn.dart';
 import 'package:newfigma/signup/signup.dart';
 import 'package:newfigma/splashScreen.dart';
+import 'package:newfigma/subscription/subscription.dart';
 
 class AppRoutes{
   static String splashScreen='/SplashScreen';
@@ -39,6 +40,7 @@ class AppRoutes{
  static String search='/Search';
  static String signIn='/SignIn';
  static String signup='/SignUp';
+ static String subscription='/Subscription';
 
   static List<GetPage> pages=[
     GetPage(name: splashScreen, page: ()=>const SplashScreen()),
@@ -60,6 +62,7 @@ class AppRoutes{
     GetPage(name: search, page: ()=>const Search()),
     GetPage(name: signIn, page: ()=>const SignIn()),
     GetPage(name: signup, page: ()=>const SignUp()), 
-       
+    GetPage(name: subscription, page: ()=>const Subscription()), 
+    
   ];
 }

@@ -38,7 +38,7 @@ class _TabHomeState extends State<TabHome> with SingleTickerProviderStateMixin {
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children: const [
+                children:  [
                   HomeScreen(),
                   Explore(),
                   Cart(),

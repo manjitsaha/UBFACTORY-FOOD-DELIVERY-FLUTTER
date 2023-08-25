@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newfigma/filters/filter.dart';
+import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';
 
-import '../core/constant/color.dart';
+import '../Product/FoodDetail.dart';
+import '../home/controller/productController.dart';
+import 'filterModel.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -13,250 +15,167 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  @override
-  Widget build(BuildContext context) {
-    double height=Get.height;
-    double width=Get.width;
-    return SafeArea(
-      child: Scaffold(
-        body:Padding(
-          padding: const EdgeInsets.all(18),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    IconButton(onPressed: (){
-                      Get.back();
-                    }, icon: const Icon(Icons.close_outlined)),
-                    const BoxTextField(hint: 'Egg',prefixIcon: Icons.search,width: 270,),
-                    GestureDetector(
-                    onTap: () {
-                      Get.to(const Filters());
-                    },  
-                    child: const Icon(Icons.tune))
-                  ],
-                ),
-                const SizedBox(height: 20,),
-                Row(
-                  children: [
-                    Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                  ),
-                  height: height*0.32,width: width*0.44,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Center(child: Image(image: AssetImage('assets/images/s1.png'))),
-                        const SizedBox(height: 0,),
-                        const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                        const Text('4 Pcs, Price'),
-                        const SizedBox(height: 20,),
-                       Row(children: [
-                        const Image(image: AssetImage('assets/images/bag.png')),
-                        const Text('50'),
-                        const SizedBox(width: 50,),
-                        Container(
-                        height: height*0.05,width: width*0.1,
-                        decoration: BoxDecoration(
-                        color: ColorConstant.backgound,
-                        borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: const Icon(Icons.add),
-                        ),      
-                       ],)
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                  ),
-                  height: height*0.32,width: width*0.44,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20,),
-                        const Center(child: Image(image: AssetImage('assets/images/s2.png'))),
-                        const SizedBox(height:10,),
-                        const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                        const Text('4 Pcs, Price'),
-                        const SizedBox(height: 17,),
-                       Row(children: [
-                        const Image(image: AssetImage('assets/images/bag.png')),
-                        const Text('50'),
-                        const SizedBox(width: 50,),
-                        Container(
-                        height: height*0.05,width: width*0.1,
-                        decoration: BoxDecoration(
-                        color: ColorConstant.backgound,
-                        borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: const Icon(Icons.add),
-                        ),      
-                       ],)
-                      ],
-                    ),
-                  ),
-                ),
-                  ],
-                ),
-                const SizedBox(height: 15,),
-                Row(
-                  children: [
-                    Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                  ),
-                  height: height*0.32,width: width*0.44,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10,),
-                        const Center(child: Image(image: AssetImage('assets/images/s3.png'))),
-                        const SizedBox(height: 15,),
-                        const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                        const Text('4 Pcs, Price'),
-                        const SizedBox(height: 20,),
-                       Row(children: [
-                        const Image(image: AssetImage('assets/images/bag.png')),
-                        const Text('50'),
-                        const SizedBox(width: 50,),
-                        Container(
-                        height: height*0.05,width: width*0.1,
-                        decoration: BoxDecoration(
-                        color: ColorConstant.backgound,
-                        borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: const Icon(Icons.add),
-                        ),      
-                       ],)
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                  ),
-                  height: height*0.32,width: width*0.44,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 13,),
-                        const Center(child: Image(image: AssetImage('assets/images/s4.png'))),
-                        const SizedBox(height:10,),
-                        const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                        const Text('4 Pcs, Price'),
-                        const SizedBox(height: 15,),
-                       Row(children: [
-                        const Image(image: AssetImage('assets/images/bag.png')),
-                        const Text('50'),
-                        const SizedBox(width: 50,),
-                        Container(
-                        height: height*0.05,width: width*0.1,
-                        decoration: BoxDecoration(
-                        color: ColorConstant.backgound,
-                        borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: const Icon(Icons.add),
-                        ),      
-                       ],)
-                      ],
-                    ),
-                  ),
-                ),
-                  ],
-                ),
-                const SizedBox(height: 15,),
-                Row(
-                children: [
-                  Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                ),
-                height: height*0.32,width: width*0.44,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20,),
-                      const Center(child: Image(image: AssetImage('assets/images/s5.png'))),
-                      const SizedBox(height: 10,),
-                      const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                      const Text('4 Pcs, Price'),
-                      const SizedBox(height: 20,),
-                     Row(children: [
-                      const Image(image: AssetImage('assets/images/bag.png')),
-                      const Text('50'),
-                      const SizedBox(width: 50,),
-                      Container(
-                      height: height*0.05,width: width*0.1,
-                      decoration: BoxDecoration(
-                      color: ColorConstant.backgound,
-                      borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: const Icon(Icons.add),
-                      ),      
-                     ],)
-                    ],
-                  ),
-                ),
+  FilterOptions selectedFilters = FilterOptions();
+void _showFilterDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Filter Options'),
+        content: StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState){  
+            return Column(
+            mainAxisSize: MainAxisSize.min,
+            
+            children: [
+              CheckboxListTile(
+                title: Text('New'),
+                contentPadding:EdgeInsets.all(0),
+                value: selectedFilters.isFeatured,
+                onChanged: (value) {
+                  setState(() {
+                    selectedFilters.isFeatured = value!;
+                  });
+                },
               ),
-              const SizedBox(width: 10,),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color.fromARGB(255, 215, 214, 214))
-                ),
-                height: height*0.32,width: width*0.44,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20,),
-                      const Center(child: Image(image: AssetImage('assets/images/s6.png'))),
-                      const SizedBox(height:30,),
-                      const Text('Egg Chicken Red',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
-                      const Text('4 Pcs, Price'),
-                      const SizedBox(height: 18,),
-                     Row(children: [
-                      const Image(image: AssetImage('assets/images/bag.png')),
-                      const Text('50'),
-                      const SizedBox(width: 50,),
-                      Container(
-                      height: height*0.05,width: width*0.1,
-                      decoration: BoxDecoration(
-                      color: ColorConstant.backgound,
-                      borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: const Icon(Icons.add),
-                      ),      
-                     ],)
-                    ],
-                  ),
-                ),
+              CheckboxListTile(
+                title: Text('Price-Low-To-High'),
+                contentPadding:EdgeInsets.all(0),
+                value: selectedFilters.isOnSale,
+                onChanged: (value) {
+                  setState(() {
+                    selectedFilters.isOnSale = value!;
+                  });
+                },
               ),
-                ],
-              )
-              ],
-            ),
+            ],
+          );
+        },),
+        actions: [
+          TextButton(
+            onPressed: () {
+              setState(() {
+                selectedFilters.reset();
+              });
+              Navigator.pop(context);
+            },
+            child: Text('Reset'),
           ),
-        ) ,
-      ),
-    );
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Apply'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+    List<Map<String, dynamic>> product= [];
+  Future<void> fetchProductData() async {
+    List<Map<String, dynamic>> productData = await getproduct();
+    setState(() {
+      product = productData;
+    });
   }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchProductData();
+    getproduct();
+  }
+  @override
+Widget build(BuildContext context) {
+  double height=Get.height;
+  double width = Get.width;
+  int itemsPerRow = 2; 
+
+  return Scaffold(
+    
+    body: Padding(
+      padding: const EdgeInsets.fromLTRB(8, 50, 8, 10),
+      child: SingleChildScrollView(
+                   scrollDirection: Axis.vertical, 
+                  child: Column(
+                    children: [
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          BoxTextField(hint: 'Search',prefixIcon: Icons.search,width: 300,),
+                          IconButton(onPressed: (){
+                            _showFilterDialog(context);
+                          }, icon: Icon(Icons.tune))
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      Wrap(
+                       spacing: 12.0, 
+                       runSpacing: 12.0, 
+                     children: List.generate(product.length, (index) {
+                      
+                       return GestureDetector(
+                         onTap: () {
+                        Get.to(FoodDetail(
+                        id: product[index]['id']??'',
+                        name: product[index]['name']??'',
+                        sizeName: product[index]['sizeName']??'',
+                        price: product[index]['price']??'',
+                        fileUrl: product[index]['fileUrl']??'',
+                        description:product[index]['description'], 
+                        
+                        ));
+                       
+                         },
+                          child:  Container(
+                            height: height*0.3,
+                            width: (width - 24.0 - (itemsPerRow - 1) * 8.0) / itemsPerRow, 
+                            decoration: BoxDecoration(
+                              border: Border.all(color: const Color.fromARGB(255, 201, 201, 201)),
+                              borderRadius: BorderRadius.circular(12)
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                const Center(child: Image(image: AssetImage('assets/images/home2.png'))),
+                                const SizedBox(height: 10,),
+                                Text(product[index]['name']),
+                                Text(product[index]['sizeName']),
+                                const SizedBox(height: 15,),
+                                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                   Row(
+                                     children: [
+                                       Image(image: AssetImage('assets/images/bag.png')),
+                                       Text(product[index]['price']),
+                                     ],
+                                   ),
+                                   SizedBox(width: 45,),
+                                  Container(
+                                    height: height*0.05,width: width*0.1,
+                                    decoration: BoxDecoration(
+                                      color: ColorConstant.backgound,
+                                      borderRadius: BorderRadius.circular(8)
+                                    ),
+                                    child: const Icon(Icons.add),
+                                  ),
+                                ],)
+                              ],),
+                            ),
+                          ),
+                       );
+                      }),
+                      
+                     ),
+                     
+                    ],
+                  ),
+                ),
+              
+      
+      ),
+  );
+}
 }

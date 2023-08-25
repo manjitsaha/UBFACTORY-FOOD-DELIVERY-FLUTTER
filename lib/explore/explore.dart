@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
-import 'package:newfigma/routes/AppRoutes.dart';
+import 'package:newfigma/widgets/boxTextfield.dart';
+
+import '../home/controller/categoryController.dart';
+import '../home/controller/productController.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -11,232 +14,95 @@ class Explore extends StatefulWidget {
 }
 
 class _ExploreState extends State<Explore> {
+   List<Map<String, dynamic>> categoryData1= [];
+  Future<void> fetchCategoryData() async {
+    List<Map<String, dynamic>> categoryData = await getcategory();
+    setState(() {
+      categoryData1 = categoryData;
+    });
+  }
   @override
-  Widget build(BuildContext context) {
-    double height=Get.height;
-    double width=Get.width;
-    return Scaffold(
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchCategoryData();
+    getproduct();
+  }
+  @override
+Widget build(BuildContext context) {
+  
+  double width = Get.width;
+  int itemsPerRow = 2; 
+
+  return Scaffold(
     appBar: AppBar(
       backgroundColor: ColorConstant.white,
       elevation: 0,
       title: Padding(
         padding: const EdgeInsets.only(left: 60),
-        child: Text('Find Products',style: TextStyle(color: ColorConstant.black,fontWeight: FontWeight.w600),),
+        child: Text(
+          'Find Products',
+          style: TextStyle(
+            color: ColorConstant.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
     ),
     body: Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.fromLTRB(8, 5, 8, 10),
       child: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+        scrollDirection: Axis.vertical, 
+        child: Column(
           children: [
-           GestureDetector(
-            onTap: () {
-              Get.toNamed(AppRoutes.search);
-            },
-             child: Container(
-              height: height*0.06,width: width*0.9,
-              decoration: BoxDecoration(
-                color: ColorConstant.white,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.grey)
-              ),
-              child: const Padding(
-                padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                child: Row(
-                  children: [
-                  Icon(Icons.search),
-                  SizedBox(width: 15,),
-                Text('Search')
-                ],),
-              ),
-             ),
-           ),
-            const SizedBox(height: 15,),
-            Row(
-              children: [
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightGreen,
-                    border: Border.all(color: ColorConstant.backgound),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p1.png')),
-                        SizedBox(height: 20),
-                        Text('Fresh Fruits\n& Vegetables',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightOrange,
-                    border: Border.all(color: ColorConstant.orange),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p2.png')),
-                        SizedBox(height: 20),
-                        Text('Fresh Fruits\n& Vegetables',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-      
-            const SizedBox(height: 15,),
-            Row(
-              children: [
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.lightred,
-                    border: Border.all(color: ColorConstant.red),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Center(child: Image(image: AssetImage('assets/images/p3.png'),height: 100,)),
-                        SizedBox(height: 5),
-                        Text('Spices',style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.lightpurple,
-                    border: Border.all(color: ColorConstant.purple),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(22.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p4.png'),height: 100,),
-                        SizedBox(height: 10),
-                        Text('Bakery & Snacks',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15,),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(AppRoutes.beverages);
-                  },
+            BoxTextField(hint: 'Search Store',prefixIcon: Icons.search,),
+            SizedBox(height:10,),
+            Wrap(
+              spacing: 12.0, 
+              runSpacing: 12.0, 
+              children: List.generate(categoryData1.length, (index) {
+                return GestureDetector(
+                  onTap: () {},
                   child: Container(
-                    height: height*0.24,
-                    width: width*0.44,
+                    width: (width - 24.0 - (itemsPerRow - 1) * 8.0) / itemsPerRow, 
+                    height: 180,
                     decoration: BoxDecoration(
-                      color: ColorConstant.extralightGreen,
-                      border: Border.all(color: ColorConstant.backgound),
-                      borderRadius: BorderRadius.circular(14)
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 201, 201, 201),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      color: ColorConstant.extralightOrange,
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Column(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image(image: AssetImage('assets/images/p5.png'),height: 100,),
-                          SizedBox(height: 10),
-                          Text('Beverages',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
+                          ClipOval(
+                            child: Image.network(
+                              categoryData1[index]['imageUrl'],
+                              height: 100,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image(
+                                  image: AssetImage('assets/images/pulse.png'),
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 20), 
+                          Flexible(
+                            child: Text(categoryData1[index]['name']),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightOrange,
-                    border: Border.all(color: ColorConstant.orange),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p2.png')),
-                        SizedBox(height: 20),
-                        Text('Fresh Fruits\n& Vegetables',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15,),
-            Row(
-              children: [
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightGreen,
-                    border: Border.all(color: ColorConstant.backgound),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p1.png')),
-                        SizedBox(height: 20),
-                        Text('Fresh Fruits\n& Vegetables',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10,),
-                Container(
-                  height: height*0.24,
-                  width: width*0.44,
-                  decoration: BoxDecoration(
-                    color: ColorConstant.extralightOrange,
-                    border: Border.all(color: ColorConstant.orange),
-                    borderRadius: BorderRadius.circular(14)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Image(image: AssetImage('assets/images/p2.png')),
-                        SizedBox(height: 20),
-                        Text('Fresh Fruits\n& Vegetables',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w700),)
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                );
+              }),
             ),
           ],
         ),
       ),
     ),
-    );
-  }
+  );
+}
 }

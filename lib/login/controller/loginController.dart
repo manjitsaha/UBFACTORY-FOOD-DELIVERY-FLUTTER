@@ -30,34 +30,41 @@ final RxBool isLoading = false.obs;
     http.Response response= 
     await http.post(url,body: jsonEncode(body),headers: headers);
   print('Response Status Code: ${response.statusCode}');
+  print(response.body);
 // print('Response Body: ${response.body}');
   if(response.statusCode == 200){
     final data = jsonDecode(response.body);
     final token = data['token']??'';
+    final username=data['customer']['name']??'';
+    final useremail=data['customer']['email']??'';
+   
+    
     SharedPreferences passtoken =await SharedPreferences.getInstance();
     passtoken.setString('newtoken', token);
+    passtoken.setString('username',username);
+    passtoken.setString('useremail', useremail);
+    String uname= passtoken.getString('username')??'';
+    String uemail= passtoken.getString('useremail')??'';
+    print(uname);
+    print(uemail);
     print(token);
-    showDialog(context: Get.context!, builder: (context){
-      return const SimpleDialog(
+    showDialog(
+      context: Get.context!,
+      builder: (context){
+      final dialog = SimpleDialog(
         title: Text('Successful'),
         contentPadding: EdgeInsets.all(20),
         children: [Text('User Logged In Succefully')]
       );
-    }).then((value) => Get.to(TabHome())
-    //  showDialog(context:Get.context!, builder: (context){
-    //   return SimpleDialog(
-    //     title: Text('Permission'),
-    //     contentPadding: EdgeInsets.all(20),
-    //     children: [Text('Allow Location Access for better Results.'),
-    //     SizedBox(height: 10,),
-    //     ButtonWidget(onPressed: () {
-    //       Get.to(TabHome());
-    //     }
-         
-    //     , text: 'Grant Permission', backgroundColor: ColorConstant.buttonbackgound, textColor: ColorConstant.white)
-    //     ]
-    //   );
-    //  })
+      Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pop(); 
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => TabHome()),
+      );
+    });
+    return dialog;
+    }
     );
     final json =jsonDecode(response.body);
     if(json['code']==0){

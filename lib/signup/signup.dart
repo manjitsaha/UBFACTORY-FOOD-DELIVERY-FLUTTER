@@ -38,8 +38,8 @@ void _togglePasswordVisibility() {
                 const SizedBox(height: 10,),
                 const Text('Enter your credentials to continue'),
                 const SizedBox(height: 15,),
-                const Text('Username'),
-                 TextfieldWidget(controller: registrationController.name,hint: 'Enter your Username'),
+                const Text('Name'),
+                 TextfieldWidget(controller: registrationController.name,hint: 'Enter your Name'),
                 const SizedBox(height: 15,),
                 const Text('Phone Number'),
                  TextfieldWidget(controller: registrationController.mobile,hint: 'Enter your Phone Number'),
@@ -47,8 +47,8 @@ void _togglePasswordVisibility() {
                 const Text('Email'),
                  TextfieldWidget(controller: registrationController.email,hint: 'Enter your Email'),
                 const SizedBox(height: 15,),
-                const Text('username'),
-                 TextfieldWidget(controller: registrationController.username,hint: 'Enter your Role'),
+                const Text('Username'),
+                 TextfieldWidget(controller: registrationController.username,hint: 'Enter your Username'),
                 const SizedBox(height: 15,),
                 const Text('Password'),
                 Stack(alignment: Alignment.centerRight,
@@ -73,7 +73,7 @@ void _togglePasswordVisibility() {
                 const SizedBox(height: 10,),
                 Row(
                   children: [
-                    const Text('By continuing you agree to our'),
+                    const Text('By continuing you agree to'),
                     Text('Terms and Services',style: TextStyle(color: ColorConstant.backgound),)
                   ],
                 ),

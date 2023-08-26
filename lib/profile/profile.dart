@@ -16,8 +16,29 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+var _uname;
+var _uemail;
+   @override
+  void initState() {
+    super.initState();
+    _loadProfileData(); 
+  }
+  Future<void> _loadProfileData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+   String uname =prefs.getString('username')??'';
+   String uemail=prefs.getString('useremail')??'';
+  //  print(uname);
+  //  print(uemail);
+   setState(() {
+     _uname=uname;
+     _uemail=uemail;
+   });
+   print(_uemail);
+   print(_uname);
+  }
   @override
   Widget build(BuildContext context) {
+   
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -25,7 +46,7 @@ class _ProfileState extends State<Profile> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Row(
                     children: [
@@ -33,12 +54,14 @@ class _ProfileState extends State<Profile> {
                     SizedBox(width: 15,),
                     Column(crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Naveen Reddy',style:TextStyle(fontSize: 17,fontWeight: FontWeight.w900),),
-                        Text('naveen001@gmail.com')
+                        Text(_uname.toString(),style:TextStyle(fontSize: 17,fontWeight: FontWeight.w900),),
+                        Text(_uemail.toString())
                       ],
                     ),
                     SizedBox(width: 40,),
-                    Icon(Icons.edit_outlined)
+                    GestureDetector(
+                      child: Icon(Icons.edit_outlined)
+                    )
                   ],),
                 ),
                 const Divider(thickness: 2,),

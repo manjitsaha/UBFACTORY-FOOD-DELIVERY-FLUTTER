@@ -42,8 +42,8 @@ class _SignInLogInTabState extends State<SignInLogInTab> with SingleTickerProvid
               ),
               controller: _tabController,
               tabs: [
-                Tab(text: 'SignIn',), // Empty tabs without text
-                Tab(text: 'LogIn',),
+                Tab(text: 'Sign Up',), // Empty tabs without text
+                Tab(text: 'Log In',),
               ],
             ),
             Expanded(

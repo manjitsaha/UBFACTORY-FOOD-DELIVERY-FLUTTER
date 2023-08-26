@@ -223,17 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap:  (){
                           print(product['id']);
                           print(product['sizeId']);
-                          
-                        cartController.getaddToCart({
-                       'id': product['id'],
-                       'name': product['name'],
-                        });
-                         ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Item added to cart'),
-                          duration: Duration(seconds: 2), 
-                        ),
-                      );
+                        cartController.addToCart(product['id'], product['sizeId'], 1);
                         },
                         child: Container(
                           height: height * 0.05,
@@ -394,33 +384,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                             fontSize: 16,
                                           ),
                                           children: [
-                                            TextSpan(
-                                              text: product[index]['price'],
+                                           TextSpan(
+                                              text: product[index]['promoPrice'],
                                               style: TextStyle(decoration: TextDecoration.lineThrough),
                                             ),
                                             TextSpan(text: '  '), 
-                                            TextSpan(
-                                              text: product[index]['promoPrice'],
+                                             TextSpan(
+                                              text: product[index]['price'],
                                               style: TextStyle(fontWeight: FontWeight.bold),
                                             ),
+                                            
                                           ],
                                         ),
                                       ),
                                       const SizedBox(width: 45,),
                                       GestureDetector(
                                         onTap: (){
-                                        cartController.getaddToCart({
-                                        'id': product[index]['id'],
-                                        'name': product[index]['name'],
-                                        
-                                      });
-                                         
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(
-                                            content: Text('Item added to cart'),
-                                            duration: Duration(seconds: 2), 
-                                          ),
-                                        );
+                                      cartController.addToCart(product[index]['id'], product[index]['sizeId'], 1);
                                         },
                                         child: Container(
                                           height: height*0.05,width: width*0.1,

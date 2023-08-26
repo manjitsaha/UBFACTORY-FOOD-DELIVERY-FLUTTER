@@ -6,7 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> _fetchProfileData() async {
    SharedPreferences token= await SharedPreferences.getInstance();
    var newtoken=token.getString('newtoken');
-
+   
+   
     if (newtoken != null) {
       final response = await http.get(
         Uri.parse(''),

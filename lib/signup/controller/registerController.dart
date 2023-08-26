@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:newfigma/home/hometab.dart';
 import 'package:newfigma/login/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/api_endpoint.dart';
 
 class RegistrationController extends GetxController{
@@ -42,16 +43,7 @@ print('Response Body: ${response.body}');
         children: [Text('User Registered Succefully')]
       );
     }); Get.to(TabHome());
-    final json =jsonDecode(response.body);
-    if(json['code']==0){
-      var token =json['data']['Token'];
-      print(token);
-      // final SharedPreferences prefs= await _prefs;
-      name.clear();
-      email.clear();
-      password.clear();
-     
-    }
+    
     
   }
   else if(response.statusCode== 400){
@@ -62,6 +54,8 @@ print('Response Body: ${response.body}');
         children: [Text('This Mobile Number is already exists. Please Login or use different number to register')]
       );
     }).then((value) => Get.to(LogIn()));
+    print(response.statusCode);
+    print(response.body);
     }
   
   }

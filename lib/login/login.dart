@@ -44,7 +44,7 @@ void _togglePasswordVisibility() {
                   return loginController.isLoading.value
                       ? CircularProgressIndicator()
                       : SizedBox.shrink();
-                             }),
+                   }),
                ),
               const Text('Password'),
                Stack(alignment: Alignment.centerRight,

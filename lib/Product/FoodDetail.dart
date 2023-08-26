@@ -159,37 +159,41 @@ Future<void> toggleFavorite() async {
         child: SingleChildScrollView(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height:height*0.32,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromARGB(255, 232, 232, 232),
+              Stack(
+                children:[ Container(
+                  height:height*0.32,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: const Color.fromARGB(255, 232, 232, 232),
+                  ),
+                  child:Center(child: Image(image: AssetImage('assets/images/dosa.png'),)),
                 ),
-                child:  const Center(child: Image(image: AssetImage('assets/images/dosa.png'),)),
-              ),
-             const SizedBox(height: 20,),
-             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              Text(widget.name,style: Style.heading,),
-              GestureDetector(
+              Positioned(
+                right: 15,
+                top: 15,
+                child:GestureDetector(
                 onTap: () {
                 toggleFavorite(); 
                 },
                 child: Icon(
                 isFavourite ? Icons.favorite : Icons.favorite_outline,
                 color: isFavourite ? Colors.red : null, 
+                size: 28,
                 ),
-              ),
+              ), )
+            ]),
+             const SizedBox(height: 20,),
+             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+              Text(widget.name,style: Style.heading,),
+             
              ],),
              Text(widget.sizeName),
             const SizedBox(height: 10,),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
               Container(width: 180,
-                    decoration: const BoxDecoration(
-                      // borderRadius: BorderRadius.circular(10),
-                      // border: Border.all(color: Colors.grey)
-                    ),
+                    
                      child: Row(
                      children: [
                       GestureDetector(
@@ -247,13 +251,13 @@ Future<void> toggleFavorite() async {
             const Row(
               children: [
               Text('Review',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700)),
-              SizedBox(width: 185,),
+              SizedBox(width: 160,),
               Image(image: AssetImage('assets/images/stars.png')),
               Icon(Icons.arrow_forward_ios)
             ],),
-            const SizedBox(height: 18,),
+            const SizedBox(height: 50,),
             ButtonWidget(onPressed: (){
-              //  addToCart(widget.id, widget.sizeId??'', 1);
+              
             },
              text: 'Add to Cart',
               backgroundColor: ColorConstant.backgound, textColor: ColorConstant.white)

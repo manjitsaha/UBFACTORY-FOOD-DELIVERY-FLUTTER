@@ -11,7 +11,6 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   final CartController cartController = Get.put(CartController());
-  
 
   @override
   void initState() {
@@ -46,21 +45,10 @@ class _CartState extends State<Cart> {
               itemCount: cartModel.cart!.cartDetails!.length,
               itemBuilder: (context, index) {
                 CartDetails cartItem = cartModel.cart!.cartDetails![index];
-               int itemQuantity = cartItem.quantity ?? 1;
+               int quantity = cartItem.quantity!;
 
-                void incrementItemQuantity() {
-                  setState(() {
-                    itemQuantity++;
-                  });
-                }
+             
 
-                void decrementItemQuantity() {
-                  if (itemQuantity > 1) {
-                    setState(() {
-                      itemQuantity--;
-                    });
-                  }
-                }
 
                 return SingleChildScrollView(
                   child: Column(
@@ -77,41 +65,50 @@ class _CartState extends State<Cart> {
                         subtitle: Text('Price: ${cartItem.price!}'),
                         trailing: Text('Quantity: ${cartItem.quantity}'),
                       ),
-                      // Container(
-                      //   width: 180,
-                      //   child: Row(
-                      //     children: [
-                      //       GestureDetector(
-                      //         onTap: decrementItemQuantity,
-                      //         child: Container(
-                      //           padding: const EdgeInsets.all(8.0),
-                      //           child: const Icon(Icons.remove),
-                      //         ),
-                      //       ),
-                      //       const SizedBox(width: 15),
-                      //       Container(
-                      //         width: 35,
-                      //         height: 35,
-                      //         decoration: BoxDecoration(
-                      //           border: Border.all(color: Colors.grey),
-                      //           borderRadius: BorderRadius.circular(8.0),
-                      //         ),
-                      //         child: Center(
-                      //           child: Text('$itemQuantity',
-                      //               style: const TextStyle(fontSize: 16)),
-                      //         ),
-                      //       ),
-                      //       const SizedBox(width: 15),
-                      //       GestureDetector(
-                      //         onTap: incrementItemQuantity,
-                      //         child: Container(
-                      //           padding: const EdgeInsets.all(8.0),
-                      //           child: const Icon(Icons.add),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                       Container(width: 180,
+                    
+                     child: Row(
+                     children: [
+                      GestureDetector(
+                        onTap: (){
+                          if (quantity > 1) {
+                    setState(() {
+                      quantity--;
+                      cartItem.quantity = quantity;
+                    });
+                  }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Icon(Icons.remove),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Container(width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                      child:Center(child: Text(quantity.toString(),style: const TextStyle(fontSize: 16),)),
+                      ),
+                      const SizedBox(width: 15),
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            quantity++;
+                    cartItem.quantity = quantity;
+                    cartController.addToCart(cartItem.productId.toString(), cartItem.sizeDetails!.sId.toString(), 1);
+                  });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Icon(Icons.add),
+                        ),
+                      ),
+                        ],
+                     ),
+                   ),
                       Divider(thickness: 2),
                     ],
                   ),

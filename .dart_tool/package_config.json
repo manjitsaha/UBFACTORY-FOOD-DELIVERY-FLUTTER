@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "args",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/args-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/async-2.11.0",
       "packageUri": "lib/",
@@ -32,6 +38,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "connectivity_plus",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/connectivity_plus-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "connectivity_plus_platform_interface",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/connectivity_plus_platform_interface-1.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "crypto",
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/crypto-3.0.3",
       "packageUri": "lib/",
@@ -48,6 +66,12 @@
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/cupertino_icons-1.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "dbus",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/dbus-0.7.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "fake_async",
@@ -206,6 +230,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nm",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/nm-0.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/path-1.8.3",
       "packageUri": "lib/",
@@ -228,6 +258,12 @@
       "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/path_provider_windows-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/petitparser-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "platform",
@@ -356,13 +392,19 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/xml-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "newfigma",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-24T09:08:17.851918Z",
+  "generated": "2023-08-27T08:05:10.459686Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

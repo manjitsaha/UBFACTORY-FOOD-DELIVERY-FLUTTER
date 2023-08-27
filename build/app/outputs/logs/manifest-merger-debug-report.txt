@@ -30,6 +30,7 @@ MERGED from C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUT
 MERGED from [:shared_preferences_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:geocoding_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:connectivity_plus] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\Dell\.gradle\caches\transforms-3\66c25f7227d4a9bf84bb0cdd4caeff37\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:2:1-9:12
@@ -86,6 +87,8 @@ MERGED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACT
 MERGED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geocoding_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geocoding_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:connectivity_plus] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
@@ -150,6 +153,10 @@ ADDED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACTO
 		ADDED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
 	android:name
 		ADDED from [:geolocator_android] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity_plus] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from [:connectivity_plus] C:\Users\Dell\Downloads\food\New folder\UBFACTORY-FOOD-DELIVERY-FLUTTER\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Dell\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required

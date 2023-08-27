@@ -5,11 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/api_endpoint.dart';
 import '../model/cart_model.dart';
-import 'package:http/http.dart' as http;
 
 class CartController extends GetxController {
   RxList<Map<String, dynamic>> cartItems = <Map<String, dynamic>>[].obs;
-
+ 
   var cartModel = CartModel();
 
   Future<CartModel> getCart() async{

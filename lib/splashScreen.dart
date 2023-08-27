@@ -3,7 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
+import 'package:newfigma/home/hometab.dart';
 import 'package:newfigma/onboarding/onboarding.dart';
+import 'package:newfigma/routes/AppRoutes.dart';
+import 'package:newfigma/signIn/tabsignin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,12 +17,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(const Duration(milliseconds: 1500), () {
-      Get.to(const OnBoarding());
+  String tokenid='';
+  Future getValidate() async{
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var token=sharedPreferences.getString('newtoken');
+    setState(() {
+      tokenid=token!;
     });
+    print(tokenid);
+  }
+
+   @override
+  void initState() {
+   getValidate().whenComplete(() async{
+    // ignore: unnecessary_null_comparison
+    Timer(Duration(seconds: 2), ()=> Get.to(tokenid.length> 2 ? TabHome() : SignInLogInTab()));
+    print(tokenid);
+   });
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {

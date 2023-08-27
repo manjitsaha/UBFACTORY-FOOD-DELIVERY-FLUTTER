@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/routes/AppRoutes.dart';
+import 'controller/network_controller.dart';
 
 void main() {
   runApp(const MyApp());
+  Get.put<NetworkController>(NetworkController(), permanent: true);
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +20,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Poppins'),
       initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
-      
     );
   }
 }
-

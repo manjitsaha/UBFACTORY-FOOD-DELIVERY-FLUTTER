@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
+import 'package:newfigma/widgets/ub_cartrow.dart';
+import '../response/status.dart';
 import 'controller/cartControlle.dart';
-import 'model/cart_model.dart'; // Import your CartModel
 
 class Cart extends StatefulWidget {
   @override
@@ -10,116 +11,91 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  final CartController cartController = Get.put(CartController());
+  final CartController cc = Get.put(CartController());
 
   @override
   void initState() {
     super.initState();
-    cartController.getCart();
+    cc.getCart();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 60),
-          child: Text(
-            'Cart Screen',
-            style: TextStyle(color: ColorConstant.black),
+        appBar: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.only(left: 60),
+            child: Text(
+              'Cart Screen',
+              style: TextStyle(color: ColorConstant.black),
+            ),
           ),
+          backgroundColor: ColorConstant.white,
+          elevation: 0,
         ),
-        backgroundColor: ColorConstant.white,
-        elevation: 0,
-      ),
-      body: FutureBuilder<CartModel>(
-        future: cartController.getCart(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else if (snapshot.hasData) {
-            CartModel cartModel = snapshot.data!;
-            return ListView.builder(
-              itemCount: cartModel.cart!.cartDetails!.length,
-              itemBuilder: (context, index) {
-                CartDetails cartItem = cartModel.cart!.cartDetails![index];
-               int quantity = cartItem.quantity!;
-
-             
-
-
-                return SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: Image.network(
-                          cartItem.fileUrl!,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Image(
-                                image: AssetImage('assets/images/home2.png'));
-                          },
-                        ),
-                        title: Text(cartItem.productName!),
-                        subtitle: Text('Price: ${cartItem.price!}'),
-                        trailing: Text('Quantity: ${cartItem.quantity}'),
-                      ),
-                       Container(width: 180,
-                    
-                     child: Row(
-                     children: [
-                      GestureDetector(
-                        onTap: (){
-                          if (quantity > 1) {
-                    setState(() {
-                      quantity--;
-                      cartItem.quantity = quantity;
-                    });
-                  }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          child: const Icon(Icons.remove),
-                        ),
-                      ),
-                      const SizedBox(width: 15),
-                      Container(width: 35,
-                      height: 35,
-                      decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                      child:Center(child: Text(quantity.toString(),style: const TextStyle(fontSize: 16),)),
-                      ),
-                      const SizedBox(width: 15),
-                      GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            quantity++;
-                    cartItem.quantity = quantity;
-                    cartController.addToCart(cartItem.productId.toString(), cartItem.sizeDetails!.sId.toString(), 1);
-                  });
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          child: const Icon(Icons.add),
-                        ),
-                      ),
-                        ],
-                     ),
-                   ),
-                      Divider(thickness: 2),
-                    ],
-                  ),
+        body: Obx(
+          () {
+            switch (cc.rxRequestStatus.value) {
+              case Status.LOADING:
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
-              },
-            );
-          } else {
-            return Text('No cart items available.');
-          }
-        },
-      ),
-    );
+              case Status.ERROR:
+                return const Text('something went wrong');
+
+              case Status.COMPLETED:
+                return ListView.separated(
+                    itemBuilder: (context, index) {
+                      return UBCartRow(
+                        image: cc
+                            .cartModel.value.cart!.cartDetails![index].fileUrl
+                            .toString(),
+                        name: cc.cartModel.value.cart!.cartDetails![index]
+                            .productName
+                            .toString(),
+                        price: cc
+                            .cartModel.value.cart!.cartDetails![index].price
+                            .toString(),
+                        qty: cc
+                            .cartModel.value.cart!.cartDetails![index].quantity
+                            .toString(),
+                        minus: () {
+                          if (cc.cartModel.value.cart!.cartDetails![index]
+                                  .quantity! >
+                              1) {
+                            int qty = cc.cartModel.value.cart!
+                                    .cartDetails![index].quantity! -
+                                1;
+                            cc.cartModel.value.cart!.cartDetails![index]
+                                .quantity = qty;
+                            setState(() {});
+                          }
+                        },
+                        plus: () {
+                          int qty = cc.cartModel.value.cart!.cartDetails![index]
+                                  .quantity! +
+                              1;
+                          cc.cartModel.value.cart!.cartDetails![index]
+                              .quantity = qty;
+                          cc.addToCart(
+                              context,
+                              cc.cartModel.value.cart!.cartDetails![index]
+                                  .productId
+                                  .toString(),
+                              cc.cartModel.value.cart!.cartDetails![index]
+                                  .sizeDetails!.sId
+                                  .toString(),
+                              1);
+                          setState(() {});
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider();
+                    },
+                    itemCount: cc.cartModel.value.cart!.cartDetails!.length);
+            }
+          },
+        ));
   }
 }

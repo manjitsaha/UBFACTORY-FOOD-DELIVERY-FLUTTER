@@ -92,146 +92,164 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    CartController cartController=CartController();
+    CartController cartController = CartController();
 
     double height = Get.height;
-    double width = MediaQuery.of(context).size.width; 
+    double width = MediaQuery.of(context).size.width;
     int itemsPerRow = 2;
 
     double itemWidth = (width - 24.0 - (itemsPerRow - 1) * 8.0) / itemsPerRow;
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 50, 8, 10),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  BoxTextField(
-                    hint: 'Search',
-                    prefixIcon: Icons.search,
-                    width: width * 0.7,
+        body: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 50, 8, 10),
+            child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      BoxTextField(
+                        hint: 'Search',
+                        prefixIcon: Icons.search,
+                        width: width * 0.7,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          _showFilterDialog(context);
+                        },
+                        icon: Icon(Icons.tune),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {
-                      _showFilterDialog(context);
-                    },
-                    icon: Icon(Icons.tune),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15),
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 12.0,
-                children: List.generate(product.length, (index) {
-                      double? originalPrice =double.tryParse(product[index]['promoPrice']??'');
-                      double? promoPrice =double.tryParse(product[index]['price']??'');
+                  SizedBox(height: 15),
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 12.0,
+                    children: List.generate(product.length, (index) {
+                      double? originalPrice =
+                          double.tryParse(product[index]['promoPrice'] ?? '');
+                      double? promoPrice =
+                          double.tryParse(product[index]['price'] ?? '');
 
-                      double discountPercentage =0;
-                      if (originalPrice != null && promoPrice != null && originalPrice > promoPrice) {
+                      double discountPercentage = 0;
+                      if (originalPrice != null &&
+                          promoPrice != null &&
+                          originalPrice > promoPrice) {
                         double discountAmount = originalPrice - promoPrice;
-                        discountPercentage = (discountAmount / originalPrice) * 100;
+                        discountPercentage =
+                            (discountAmount / originalPrice) * 100;
                       }
-                      
-                         return GestureDetector(
-                           onTap: () {
+
+                      return GestureDetector(
+                        onTap: () {
                           Get.to(FoodDetail(
-                          id: product[index]['id']??'',
-                          name: product[index]['name']??'',
-                          sizeName: product[index]['sizeName']??'',
-                          price: product[index]['price']??'',
-                          fileUrl: product[index]['fileUrl']??'',
-                          description:product[index]['description'],
-                          
+                            id: product[index]['id'] ?? '',
+                            name: product[index]['name'] ?? '',
+                            sizeName: product[index]['sizeName'] ?? '',
+                            price: product[index]['price'] ?? '',
+                            fileUrl: product[index]['fileUrl'] ?? '',
+                            description: product[index]['description'],
                           ));
-                         
-                           },
-                            child:  Container(
-                              height: height*0.32,
-                              width: itemWidth+2,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: const Color.fromARGB(255, 201, 201, 201)),
-                                borderRadius: BorderRadius.circular(12)
-                              ),
-                              child: Padding(
-                                padding:  EdgeInsets.all(5.0),
-                                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                  Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                        },
+                        child: Container(
+                          height: height * 0.32,
+                          width: itemWidth + 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 201, 201, 201)),
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 4),
                                   decoration: BoxDecoration(
-                                    color: Colors.green, // Choose the color you prefer
+                                    color: Colors
+                                        .green, // Choose the color you prefer
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Text(
                                     '${discountPercentage.toStringAsFixed(0)}% Off',
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12
-                                    ),
+                                        color: Colors.white, fontSize: 12),
                                   ),
                                 ),
-                                  const Center(child: Image(image: AssetImage('assets/images/home2.png'))),
-                                  const SizedBox(height: 10,),
-                                  Text(product[index]['name']),
-                                  Text(product[index]['sizeName']),
-                                  const SizedBox(height: 15,),
-                                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                    const Image(image: AssetImage('assets/images/bag.png')),
-                                     RichText(
+                                const Center(
+                                    child: Image(
+                                        image: AssetImage(
+                                            'assets/images/home2.png'))),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(product[index]['name']),
+                                Text(product[index]['sizeName']),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Image(
+                                        image: AssetImage(
+                                            'assets/images/bag.png')),
+                                    RichText(
                                       text: TextSpan(
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
                                         ),
                                         children: [
-                                          
                                           TextSpan(
                                             text: product[index]['promoPrice'],
-                                            style: TextStyle(decoration: TextDecoration.lineThrough),
+                                            style: TextStyle(
+                                                decoration:
+                                                    TextDecoration.lineThrough),
                                           ),
-                                          TextSpan(text: '  '), 
+                                          TextSpan(text: '  '),
                                           TextSpan(
                                             text: product[index]['price'],
-                                            style: TextStyle(fontWeight:FontWeight.bold),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 45,),
+                                    const SizedBox(
+                                      width: 45,
+                                    ),
                                     GestureDetector(
-                                      onTap: (){
-                                    cartController.addToCart(product[index]['id'], product[index]['sizeId'], 1);
+                                      onTap: () {
+                                        cartController.addToCart(
+                                            context,
+                                            product[index]['id'],
+                                            product[index]['sizeId'],
+                                            1);
                                       },
                                       child: Container(
-                                        height: height*0.05,
-                                        width: width*0.1,
+                                        height: height * 0.05,
+                                        width: width * 0.1,
                                         decoration: BoxDecoration(
-                                          color: ColorConstant.backgound,
-                                          borderRadius: BorderRadius.circular(8)
-                                        ),
+                                            color: ColorConstant.backgound,
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
                                         child: const Icon(Icons.add),
                                       ),
                                     ),
-                                  ],)
-                                ],),
-                              ),
+                                  ],
+                                )
+                              ],
                             ),
-                         );
-                      }),
-                      
-                
-                
-               )
-            ]
-          )
-        )
-      )
-    );
+                          ),
+                        ),
+                      );
+                    }),
+                  )
+                ]))));
   }
 }

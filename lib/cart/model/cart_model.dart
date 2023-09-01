@@ -72,6 +72,7 @@ class Cart {
 }
 
 class CartDetails {
+  String? itemId;
   String? productId;
   String? productName;
   String? fileUrl;
@@ -80,7 +81,9 @@ class CartDetails {
   String? price;
 
   CartDetails(
-      {this.productId,
+      {
+      this.itemId,
+      this.productId,
       this.productName,
       this.fileUrl,
       this.sizeDetails,
@@ -88,6 +91,7 @@ class CartDetails {
       this.price});
 
   CartDetails.fromJson(Map<String, dynamic> json) {
+    itemId=json['itemId'];
     productId = json['productId'];
     productName = json['productName'];
     fileUrl = json['fileUrl'];
@@ -100,6 +104,7 @@ class CartDetails {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['itemId']=this.itemId;
     data['productId'] = this.productId;
     data['productName'] = this.productName;
     data['fileUrl'] = this.fileUrl;

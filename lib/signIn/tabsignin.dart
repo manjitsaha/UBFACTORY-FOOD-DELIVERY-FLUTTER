@@ -34,17 +34,20 @@ class _SignInLogInTabState extends State<SignInLogInTab> with SingleTickerProvid
               padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
               child: Text('Welcome\nto UB Factory!!!',style:Style.heading ,),
             ),
-            SizedBox(height: 40,),
-            TabBar(
-              labelColor: ColorConstant.black,
-              indicator: BoxDecoration(color: ColorConstant.backgound,
-              borderRadius: BorderRadius.circular(22)
+            SizedBox(height: 25,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TabBar(
+                labelColor: ColorConstant.black,
+                indicator: BoxDecoration(color: ColorConstant.backgound,
+                borderRadius: BorderRadius.circular(22)
+                ),
+                controller: _tabController,
+                tabs: [
+                  Tab(text: 'Sign Up',), // Empty tabs without text
+                  Tab(text: 'Log In',),
+                ],
               ),
-              controller: _tabController,
-              tabs: [
-                Tab(text: 'Sign Up',), // Empty tabs without text
-                Tab(text: 'Log In',),
-              ],
             ),
             Expanded(
               child: TabBarView(

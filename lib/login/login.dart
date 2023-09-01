@@ -4,8 +4,11 @@ import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
 import 'package:newfigma/login/controller/loginController.dart';
 import 'package:newfigma/routes/AppRoutes.dart';
+import 'package:newfigma/widgets/boxTextfield.dart';
 import 'package:newfigma/widgets/button.dart';
 import 'package:newfigma/widgets/textfield.dart';
+
+import '../core/response/status.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -31,13 +34,15 @@ void _togglePasswordVisibility() {
         padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),
         child: SingleChildScrollView(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+             children:[
+              
               Text('Loging',style: Style.heading,),
               const SizedBox(height: 20,),
               const Text('Enter your emails and password'),
               const SizedBox(height: 20,),
               const Text('Email'),
-               TextfieldWidget(controller:loginController.email ,hint: 'Enter your email'),
+              BoxTextField(borderRadius: 12,
+              controller:loginController.email ,hint: 'Enter your email'),
               const SizedBox(height: 20,),
               Center(
                  child: Obx(() {
@@ -49,7 +54,8 @@ void _togglePasswordVisibility() {
               const Text('Password'),
                Stack(alignment: Alignment.centerRight,
                 children: [
-                  TextfieldWidget(
+                BoxTextField(
+                borderRadius: 12,
                 controller: loginController.password,
                 hint: 'Enter your password',
                 

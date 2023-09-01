@@ -1,4 +1,4 @@
-#Sun Aug 27 16:36:14 IST 2023
-base.0=C\:\\Users\\ManjitSaha\\Downloads\\Git\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Fri Sep 01 10:51:35 IST 2023
+base.0=C\:\\Users\\Dell\\Downloads\\UBFACTORY-FOOD-DELIVERY-FLUTTER\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

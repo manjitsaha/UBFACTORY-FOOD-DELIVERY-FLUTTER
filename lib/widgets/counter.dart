@@ -42,7 +42,7 @@ class _CounterState extends State<Counter> {
                         child: const Icon(Icons.remove),
                       ),
                     ),
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 10),
                     Container(width: 35,
                     height: 35,
                     decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class _CounterState extends State<Counter> {
                         ),
                     child:Center(child: Text('$_quantity',style: const TextStyle(fontSize: 16),)),
                     ),
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 10),
                     GestureDetector(
                       onTap: _increment,
                       child: Container(

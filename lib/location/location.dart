@@ -42,7 +42,8 @@ class _LocationState extends State<Location> {
              onChanged: (value){print(('Selected option: $value'));}),
              const SizedBox(height: 24,),
              ButtonWidget(onPressed: (){
-              Get.toNamed(AppRoutes.login);
+              
+              Get.toNamed(AppRoutes.tabhome);
              },
               text: 'Submit',
                backgroundColor: ColorConstant.backgound, 

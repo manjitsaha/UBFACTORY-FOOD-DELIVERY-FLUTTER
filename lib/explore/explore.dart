@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newfigma/ColorModel/Color_Model.dart';
 import 'package:newfigma/core/constant/color.dart';
+import 'package:newfigma/home/controller/homeController.dart';
+import 'package:newfigma/search/search.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';
-
-import '../home/controller/categoryController.dart';
 import '../home/controller/productController.dart';
 
 class Explore extends StatefulWidget {
@@ -14,9 +17,24 @@ class Explore extends StatefulWidget {
 }
 
 class _ExploreState extends State<Explore> {
+  HomeController hc = HomeController();
+  List<ColorModel> colors=[
+  ColorModel(backgorundColor: ColorConstant.extralightGreen, borderColor: ColorConstant.lightGreen),
+  ColorModel(backgorundColor: ColorConstant.extralightOrange, borderColor: ColorConstant.lightOrange),
+
+  ];
+ 
+int Function() generateRandom=(){
+Random random=new Random();
+int min =0,max=2;
+int num =min+random.nextInt(max-min);
+return num;
+};
+
+
    List<Map<String, dynamic>> categoryData1= [];
   Future<void> fetchCategoryData() async {
-    List<Map<String, dynamic>> categoryData = await getcategory();
+    List<Map<String, dynamic>> categoryData = await hc.getcategory();
     setState(() {
       categoryData1 = categoryData;
     });
@@ -26,7 +44,7 @@ class _ExploreState extends State<Explore> {
     // TODO: implement initState
     super.initState();
     fetchCategoryData();
-    getproduct();
+    hc.getproduct();
   }
   @override
 Widget build(BuildContext context) {
@@ -35,6 +53,7 @@ Widget build(BuildContext context) {
   int itemsPerRow = 2; 
 
   return Scaffold(
+    
     appBar: AppBar(
       backgroundColor: ColorConstant.white,
       elevation: 0,
@@ -50,28 +69,30 @@ Widget build(BuildContext context) {
       ),
     ),
     body: Padding(
-      padding: const EdgeInsets.fromLTRB(8, 5, 8, 10),
+      padding:  EdgeInsets.fromLTRB(8, 5, 8, 10),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical, 
         child: Column(
           children: [
-            BoxTextField(hint: 'Search Store',prefixIcon: Icons.search,),
+            BoxTextField(hint: 'Search Store',prefixIcon: Icons.search,showBorder: false,borderRadius: 12,),
             SizedBox(height:10,),
             Wrap(
               spacing: 12.0, 
               runSpacing: 12.0, 
               children: List.generate(categoryData1.length, (index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(Search());
+                  },
                   child: Container(
                     width: (width - 24.0 - (itemsPerRow - 1) * 8.0) / itemsPerRow, 
                     height: 180,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color.fromARGB(255, 201, 201, 201),
+                        color: colors[generateRandom()].borderColor,
                       ),
                       borderRadius: BorderRadius.circular(12),
-                      color: ColorConstant.extralightOrange,
+                      color:colors[generateRandom()].backgorundColor,
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),

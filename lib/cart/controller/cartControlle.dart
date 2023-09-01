@@ -11,10 +11,9 @@ import '../model/cart_model.dart';
 class CartController extends GetxController {
   RxList<Map<String, dynamic>> cartItems = <Map<String, dynamic>>[].obs;
 
-  var _api = NetworkApi();
-
-  final rxRequestStatus = Status.LOADING.obs;
-  final cartModel = CartModel().obs;
+  
+final rxRequestStatus = Status.LOADING.obs;
+ Rx<CartModel> cartModel = Rx(CartModel());
 
   void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
   void setCartList(CartModel value) => cartModel.value = value;
@@ -97,7 +96,7 @@ class CartController extends GetxController {
           duration: Duration(seconds: 2),
         );
         ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
-
+        print(response.body);
         print('Failed to add item to cart');
       }
     } catch (e) {
@@ -105,4 +104,60 @@ class CartController extends GetxController {
     }
     Get.back();
   }
+ 
+  //remove cart
+   Future<void> removeFromCart(String itemId) async {
+    try {
+      showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          });
+      SharedPreferences token = await SharedPreferences.getInstance();
+      var userId = token.getString('newtoken');
+
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.removeCart);
+      var headers = {
+        'Authorization': 'Bearer $userId',
+        'Content-Type': 'application/json',
+      };
+
+      var body = {
+        'itemId': itemId,
+      };
+
+      http.Response response = await http.post(
+        url,
+        headers: headers,
+        body: json.encode(body),
+      );
+
+      if (response.statusCode == 200) {
+        final snackBar = SnackBar(
+          content: Text('item removed from cart'),
+          duration: Duration(seconds: 2),
+        );
+        ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
+        
+        cartItems.removeWhere((item) => item['itemId'] == itemId);
+        print(response.body);
+        print(cartItems);
+      } else {
+        final snackBar = SnackBar(
+          content: Text('failed to remove from cart'),
+          duration: Duration(seconds: 2),
+        );
+        ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
+
+        print(response.body);
+      }
+    } catch (e) {
+      print('Error adding item to cart: $e');
+    }
+    Get.back();
+  }
+
 }

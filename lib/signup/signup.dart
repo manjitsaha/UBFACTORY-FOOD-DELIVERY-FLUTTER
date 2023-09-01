@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/login/login.dart';
 import 'package:newfigma/signup/controller/registerController.dart';
+import 'package:newfigma/widgets/boxTextfield.dart';
 
 import '../core/constant/color.dart';
 import '../core/style/style.dart';
@@ -39,21 +40,22 @@ void _togglePasswordVisibility() {
                 const Text('Enter your credentials to continue'),
                 const SizedBox(height: 15,),
                 const Text('Name'),
-                 TextfieldWidget(controller: registrationController.name,hint: 'Enter your Name'),
+                 BoxTextField(controller: registrationController.name,
+                 hint: 'Enter your Name',borderRadius: 12,),
                 const SizedBox(height: 15,),
                 const Text('Phone Number'),
-                 TextfieldWidget(controller: registrationController.mobile,hint: 'Enter your Phone Number'),
+                 BoxTextField(borderRadius: 12,controller: registrationController.mobile,hint: 'Enter your Phone Number'),
                 const SizedBox(height: 15,),
                 const Text('Email'),
-                 TextfieldWidget(controller: registrationController.email,hint: 'Enter your Email'),
+                 BoxTextField(borderRadius: 12,controller: registrationController.email,hint: 'Enter your Email'),
                 const SizedBox(height: 15,),
                 const Text('Username'),
-                 TextfieldWidget(controller: registrationController.username,hint: 'Enter your Username'),
+                 BoxTextField(borderRadius: 12,controller: registrationController.username,hint: 'Enter your Username'),
                 const SizedBox(height: 15,),
                 const Text('Password'),
                 Stack(alignment: Alignment.centerRight,
                 children: [
-                  TextfieldWidget(
+                  BoxTextField(borderRadius: 12,
                 controller: registrationController.password,
                 hint: 'Enter your password',
                 

@@ -22,41 +22,46 @@ class Favourite extends StatelessWidget {
       ),
       body: Obx(() {
         if (favoritesController.favorites.isEmpty) {
-          return Center(child: Text('No favorites yet.',style: Style.smallHead,));
+          return Center(child: Text('No favourites yet.',style: Style.smallHead,));
         }
       
-        return ListView.builder(
-          itemCount: favoritesController.favorites.length,
-          itemBuilder: (context, index) {
-            final item = favoritesController.favorites[index];
-            return Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Column(
+        return Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: ListView.builder(
+            itemCount: favoritesController.favorites.length,
+            itemBuilder: (context, index) {
+              final item = favoritesController.favorites[index];
+              return Column(
                 children: [
-                  Divider(thickness: 2,),
+                  
                   SizedBox(height: 10,),
-                  ListTile(
-                   leading: Image(image: AssetImage('assets/images/home2.png')),
-                    title: Text(item['name']),
-                    subtitle: Text(item['sizeName']),
-                    trailing: SizedBox(
-                      width: 100,
-                      child: Row(
-                        children: [
-                          Image(image: AssetImage('assets/images/bag.png')),
-                          Text(item['price']),
-                          IconButton(onPressed: (){
-                            Get.to(FoodDetail(id: item['id'], name: item['name'], sizeName: item['sizeName'], price: item['price'], fileUrl: item['fileUrl'], description: item['description']));
-                          },icon: Icon(Icons.arrow_forward_ios))
-                        ],
+                  GestureDetector(
+                    onTap: () {
+                       Get.to(FoodDetail(id: item['id'], name: item['name'], sizeName: item['sizeName'], price: item['price'], fileUrl: item['fileUrl'], description: item['description']));
+                    },
+                    child: ListTile(
+                     leading: Image(image: AssetImage('assets/images/home2.png')),
+                      title: Text(item['name']),
+                      subtitle: Text(item['sizeName']),
+                      trailing: SizedBox(
+                        width: 100,
+                        child: Row(
+                          children: [
+                            Image(image: AssetImage('assets/images/bag.png')),
+                            Text(item['price']),
+                            IconButton(onPressed: (){
+                              Get.to(FoodDetail(id: item['id'], name: item['name'], sizeName: item['sizeName'], price: item['price'], fileUrl: item['fileUrl'], description: item['description']));
+                            },icon: Icon(Icons.arrow_forward_ios,size: 18,))
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                
+                Divider(thickness: 2,),
                 ],
-              ),
-            );
-          },
+              );
+            },
+          ),
         );
       }),
     );

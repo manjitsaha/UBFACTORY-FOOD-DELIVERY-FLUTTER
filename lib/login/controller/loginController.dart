@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/home/hometab.dart';
-import 'package:newfigma/widgets/button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/response/status.dart';
 import '../../utils/api_endpoint.dart';
 
 class LoginController extends TextEditingController{
 final RxBool isLoading = false.obs;
+final rxRequestStatus = Status.LOADING.obs;
   TextEditingController password=TextEditingController();
   TextEditingController email=TextEditingController();
 
@@ -48,24 +48,25 @@ final RxBool isLoading = false.obs;
     print(uname);
     print(uemail);
     print(token);
-    showDialog(
-      context: Get.context!,
-      builder: (context){
-      final dialog = SimpleDialog(
-        title: Text('Successful'),
-        contentPadding: EdgeInsets.all(20),
-        children: [Text('User Logged In Succefully')]
-      );
-      Future.delayed(Duration(seconds: 2), () {
-      Navigator.of(context).pop(); 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => TabHome()),
-      );
-    });
-    return dialog;
-    }
-    );
+    // showDialog(
+    //   context: Get.context!,
+    //   builder: (context){
+    //   final dialog = SimpleDialog(
+    //     title: Text('Successful'),
+    //     contentPadding: EdgeInsets.all(20),
+    //     children: [Text('User Logged In Succefully')]
+    //   );
+    //   Future.delayed(Duration(seconds: ), () {
+    //   Navigator.of(context).pop(); 
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => TabHome()),
+    //   );
+    // });
+    // return dialog;
+    // }
+    // ).then((value) => Get.to(TabHome()));
+    Get.to(TabHome());
     final json =jsonDecode(response.body);
     if(json['code']==0){
       var token =json['data']['Token'];

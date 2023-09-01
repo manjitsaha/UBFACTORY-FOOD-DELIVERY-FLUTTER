@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/home/hometab.dart';
-import 'package:newfigma/onboarding/onboarding.dart';
-import 'package:newfigma/routes/AppRoutes.dart';
 import 'package:newfigma/signIn/tabsignin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'onboarding/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
    getValidate().whenComplete(() async{
     // ignore: unnecessary_null_comparison
-    Timer(Duration(seconds: 2), ()=> Get.to(tokenid.length> 2 ? TabHome() : SignInLogInTab()));
+    Timer(Duration(seconds: 2), ()=> Get.to(tokenid.length> 2 ? TabHome() : OnBoarding()));
     print(tokenid);
    });
     super.initState();
@@ -44,11 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Stack(
           children: [
             Center(child: Image(image: AssetImage('assets/images/splash1.png'))),
-            Positioned(
-            top: 360,
-            right: 50,
-            child: Image(image: AssetImage('assets/images/splash2.png'))
-            )
+            
           ],
         ),
       )

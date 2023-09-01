@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:newfigma/home/hometab.dart';
 import 'package:newfigma/login/login.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/api_endpoint.dart';
 
 class RegistrationController extends GetxController{
@@ -15,7 +13,6 @@ class RegistrationController extends GetxController{
   TextEditingController mobile=TextEditingController();
   TextEditingController username=TextEditingController();
 
-//  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
  Future<void> registerUser() async{
   try{
@@ -43,7 +40,7 @@ print('Response Body: ${response.body}');
         children: [Text('User Registered Succefully')]
       );
     }); Get.to(TabHome());
-    
+    print(response.body);
     
   }
   else if(response.statusCode== 400){

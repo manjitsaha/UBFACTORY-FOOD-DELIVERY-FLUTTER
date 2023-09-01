@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:newfigma/core/constant/color.dart';
+
+import '../core/constant/color.dart';
 
 class IconButtonWidget extends StatelessWidget {
   final String text;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Color? textColor;
   final Function onPressed;
   final IconData? icon;
   final ImageProvider? image;
-  final IconData? prefixIcon; // New property for prefix icon
-  final ImageProvider? prefixImage; // New property for prefix image
+  final IconData? prefixIcon;
+  final ImageProvider? prefixImage;
+  final Color? prefixIconColor;
+  final Color? borderColor; // New property for border color
+  final Border? border; // New property for border
   final double? width;
   final double? height;
 
-  const IconButtonWidget({super.key, 
-     // Correct the parameter name
+  const IconButtonWidget({
+    Key? key,
     required this.onPressed,
     required this.text,
-    required this.backgroundColor,
+    this.backgroundColor,
     this.textColor,
     this.icon,
     this.image,
     this.prefixIcon,
-    this.prefixImage, // New property for prefix image
+    this.prefixImage,
+    this.prefixIconColor,
+    this.borderColor, // New property for border color
+    this.border, // New property for border
     this.width,
     this.height,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +43,28 @@ class IconButtonWidget extends StatelessWidget {
         onPressed: () => onPressed(),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              // Apply the provided border or default to no border
+              side: border?.top ?? BorderSide.none,
+            ),
           ),
           backgroundColor: MaterialStateProperty.all(backgroundColor),
+          // Apply the provided border color or default to transparent
+          overlayColor: MaterialStateProperty.all(borderColor ?? Colors.transparent),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            if (prefixIcon != null) // Render the prefix icon if provided
-              Icon(prefixIcon, color: ColorConstant.white),
-            if (prefixImage != null) // Render the prefix image if provided
+            if (prefixIcon != null)
+              Icon(
+                prefixIcon,
+                color: prefixIconColor ?? ColorConstant.white,
+              ),
+            if (prefixImage != null)
               Container(
-                width: 24, // Customize the width of the image
-                height: 24, // Customize the height of the image
+                width: 24,
+                height: 24,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: prefixImage!,

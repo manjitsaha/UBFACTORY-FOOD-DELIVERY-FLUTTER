@@ -15,6 +15,8 @@ class _AuthEndPoints {
   final String addWishList='/add-to-wishlist';
   final String addToCart='/add-to-cart';
   final String getCart='/get-cart';
+  final String removeCart='/remove-item-from-cart';
+  final String getProfile='/get-my-profile';
 }
 
 //https://ubfactory.onrender.com/api/v1/register-user

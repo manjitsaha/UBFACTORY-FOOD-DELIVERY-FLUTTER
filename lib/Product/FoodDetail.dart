@@ -251,7 +251,7 @@ Future<void> toggleFavorite() async {
                        
                         Row(
                           children: [
-                            Image(image: AssetImage('assets/images/bag.png')),
+                            Image(image: AssetImage('assets/images/Rupee.png')),
                             Text(widget.price,),
                           ],
                         )

@@ -47,8 +47,8 @@ class Favourite extends StatelessWidget {
                         width: 100,
                         child: Row(
                           children: [
-                            Image(image: AssetImage('assets/images/bag.png')),
-                            Text(item['price']),
+                           
+                            Text('₹${item['price']}',style:TextStyle(fontWeight: FontWeight.w500) ,),
                             IconButton(onPressed: (){
                               Get.to(FoodDetail(id: item['id'], name: item['name'], sizeName: item['sizeName'], price: item['price'], fileUrl: item['fileUrl'], description: item['description']));
                             },icon: Icon(Icons.arrow_forward_ios,size: 18,))

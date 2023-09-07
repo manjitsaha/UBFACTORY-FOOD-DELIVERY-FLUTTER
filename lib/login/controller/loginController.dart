@@ -78,12 +78,12 @@ final rxRequestStatus = Status.LOADING.obs;
     }
     
   }
-  else if(response.statusCode== 400){
+  else if(response.statusCode== 401){
       showDialog(context: Get.context!, builder: (context){
       return const SimpleDialog(
         title: Text('Note'),
         contentPadding: EdgeInsets.all(20),
-        children: [Text('This Mobile Number is already exists. Please Login or use different number to register')]
+        children: [Text('User is not Registered. Please Register.')]
       );
     });
     }

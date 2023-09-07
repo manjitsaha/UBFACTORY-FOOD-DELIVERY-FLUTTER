@@ -45,6 +45,9 @@ dependencies:
   flutter_svg: ^2.0.7
   lottie: ^2.6.0
   google_maps_flutter: ^2.4.1
+  dots_indicator: ^3.0.0
+  sidebarx: ^0.16.1
+  
   
 dev_dependencies:
   flutter_test:
@@ -89,7 +92,40 @@ flutter:
   fonts:
     - family: WorkSans
       fonts:
-        - asset: assets/fonts/WorkSans-LightItalic.ttf
+        - asset: assets/fonts/WorkSans-Bold.ttf
+    - family: wsregular
+      fonts:
+        - asset: assets/fonts/WorkSans-Regular.ttf
+    
+    - family: heading
+      fonts:
+        - asset: assets/fonts/NunitoSans_7pt-Bold.ttf
+    - family: authentic1
+      fonts:
+        - asset: assets/fonts/Rye-Regular.ttf
+   
+    - family: medium
+      fonts:
+        - asset: assets/fonts/WorkSans-Medium.ttf
+    - family: authentic2
+      fonts:
+        - asset: assets/fonts/Niconne-Regular.ttf
+   
+    - family: regular
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+    - family: lora
+      fonts:
+        - asset: assets/fonts/Lora-Bold.ttf
+    - family: authentic
+      fonts:
+        - asset: assets/fonts/BerkshireSwash-Regular.ttf
+    - family: monoto
+      fonts:
+        - asset: assets/fonts/Monoton-Regular.ttf
+    - family: banner
+      fonts:
+        - asset: assets/fonts/Aclonica-Regular.ttf
           
         # - asset: assets/fonts/Poppins-Regular.ttf
         #   weight: 800

@@ -4,10 +4,12 @@ import 'package:newfigma/Product/FoodDetail.dart';
 import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/core/style/style.dart';
 import 'package:newfigma/profile/delivery_address/delivery_address.dart';
+import 'package:newfigma/profile/profile.dart';
 import 'package:newfigma/widgets/counter.dart';
 import 'package:newfigma/widgets/detailInfo.dart';
 import '../cart/controller/cartControlle.dart';
 import '../cart/placeOrder.dart';
+import '../checkout/checkout.dart';
 import '../widgets/button.dart';
 import '../widgets/iconbutton.dart';
 import '../widgets/infocheckout.dart';
@@ -78,7 +80,7 @@ class _CartOldState extends State<CartOld> {
                     ),
                     InfoCheckout(
                       text1: 'Total Cost',
-                      image: 'assets/images/bag.png',
+                      image: 'assets/images/Rupee.png',
                       text2: '${cc.cartModel.value.totalPrice}',
                     ),
                     Divider(
@@ -166,7 +168,7 @@ class _CartOldState extends State<CartOld> {
                   //     Text('',style: TextStyle(fontSize: 16),),
                   //   ],
                   // ),
-                  DetailInfo(text1: 'Deliver to: Akansha Singla,132102',textSize1: 16, textSize2: 14,text2: 'Sec 12, Near Grand Hotel....'),
+                  DetailInfo(text1: 'Deliver to: ',fontWeight1: FontWeight.w400,text3: 'Akansha Singla,132102',textSize1: 14, textSize2: 14,text2: 'Sec 12, Near Grand Hotel....'),
                   IconButtonWidget(onPressed: (){
                   Get.to(ProfileDeliveryAddress());
                   }, text: 'Change', backgroundColor: Colors.white, textColor: ColorConstant.blue,width: width*0.2,border:Border.all(color: ColorConstant.blue),
@@ -208,17 +210,19 @@ class _CartOldState extends State<CartOld> {
                                     child: Image(
                                         image: AssetImage('assets/images/c1.png')),
                                   ),
+                                  SizedBox(height: 10,),
                                   const Counter()
                                 ],
                               ),
+                              SizedBox(width: 25,),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Bell Pepper Red', style: Style.smallHead),
+                                  Text('Bell Pepper Red', style: Style.smallHead1),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  const Text('1kg,Price'),
+                                  const Text('1kg,Price',style: TextStyle(fontFamily: 'regular'),),
                                   const SizedBox(
                                     height: 5,
                                   ),
@@ -230,33 +234,30 @@ class _CartOldState extends State<CartOld> {
                                     width: 130,
                                     child: Row(
                                       children: [
-                                        Container(
-                                          height: height * 0.035,
-                                          decoration: BoxDecoration(
-                                              color: ColorConstant.backgound,
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.circular(12),
-                                                  topLeft: Radius.circular(12))),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text('20% Off'),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   height: height * 0.035,
+                                        //   decoration: BoxDecoration(
+                                        //       color: ColorConstant.backgound,
+                                        //       borderRadius: BorderRadius.only(
+                                        //           bottomRight: Radius.circular(12),
+                                        //           topLeft: Radius.circular(12))),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.all(4.0),
+                                        //     child: Text('20% Off'),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           width: 10,
                                         ),
-                                        Image(
-                                            image:
-                                                AssetImage('assets/images/bag.png')),
-                                        Text(
-                                          '80',
+                                         Text(
+                                          '₹ 80',
                                           style: TextStyle(
                                               decoration: TextDecoration.lineThrough),
                                         ),
                                         SizedBox(
                                           width: 8,
                                         ),
-                                        Text('50'),
+                                        Text('50',style:TextStyle(fontWeight: FontWeight.w500)),
                                       ],
                                     ),
                                   )
@@ -295,11 +296,12 @@ class _CartOldState extends State<CartOld> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Image(image: AssetImage('assets/images/c2.png')),
+                                  SizedBox(height: 10,),
                                   const Counter()
                                 ],
                               ),
                               const SizedBox(
-                                width: 0,
+                                width: 35,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,7 +309,7 @@ class _CartOldState extends State<CartOld> {
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Text('Idli', style: Style.smallHead),
+                                  Text('Idli', style: Style.smallHead1),
                                   const SizedBox(
                                     height: 5,
                                   ),
@@ -323,33 +325,30 @@ class _CartOldState extends State<CartOld> {
                                     width: 130,
                                     child: Row(
                                       children: [
-                                        Container(
-                                          height: height * 0.035,
-                                          decoration: BoxDecoration(
-                                              color: ColorConstant.backgound,
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.circular(12),
-                                                  topLeft: Radius.circular(12))),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text('30% Off'),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   height: height * 0.035,
+                                        //   decoration: BoxDecoration(
+                                        //       color: ColorConstant.backgound,
+                                        //       borderRadius: BorderRadius.only(
+                                        //           bottomRight: Radius.circular(12),
+                                        //           topLeft: Radius.circular(12))),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.all(4.0),
+                                        //     child: Text('30% Off'),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           width: 10,
                                         ),
-                                        Image(
-                                            image:
-                                                AssetImage('assets/images/bag.png')),
                                         Text(
-                                          '80',
+                                          '₹ 80',
                                           style: TextStyle(
                                               decoration: TextDecoration.lineThrough),
                                         ),
                                         SizedBox(
                                           width: 8,
                                         ),
-                                        Text('50'),
+                                        Text('50',style:TextStyle(fontWeight: FontWeight.w500)),
                                       ],
                                     ),
                                   )
@@ -388,13 +387,15 @@ class _CartOldState extends State<CartOld> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Image(image: AssetImage('assets/images/home2.png')),
+                                  SizedBox(height: 10,),
                                   const Counter()
                                 ],
                               ),
+                              SizedBox(width: 25,),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Bonda', style: Style.smallHead),
+                                  Text('Bonda', style: Style.smallHead1),
                                   const SizedBox(
                                     height: 5,
                                   ),
@@ -410,33 +411,30 @@ class _CartOldState extends State<CartOld> {
                                     width: 130,
                                     child: Row(
                                       children: [
-                                        Container(
-                                          height: height * 0.035,
-                                          decoration: BoxDecoration(
-                                              color: ColorConstant.backgound,
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.circular(12),
-                                                  topLeft: Radius.circular(12))),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text('15% Off'),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   height: height * 0.035,
+                                        //   decoration: BoxDecoration(
+                                        //       color: ColorConstant.backgound,
+                                        //       borderRadius: BorderRadius.only(
+                                        //           bottomRight: Radius.circular(12),
+                                        //           topLeft: Radius.circular(12))),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.all(4.0),
+                                        //     child: Text('15% Off'),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           width: 10,
                                         ),
-                                        Image(
-                                            image:
-                                                AssetImage('assets/images/bag.png')),
-                                        Text(
-                                          '80',
+                                         Text(
+                                          '₹ 80',
                                           style: TextStyle(
                                               decoration: TextDecoration.lineThrough),
                                         ),
                                         SizedBox(
                                           width: 8,
                                         ),
-                                        Text('50'),
+                                        Text('50',style:TextStyle(fontWeight: FontWeight.w500)),
                                       ],
                                     ),
                                   )
@@ -475,13 +473,15 @@ class _CartOldState extends State<CartOld> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Image(image: AssetImage('assets/images/home3.png')),
+                                  SizedBox(height: 10,),
                                   const Counter()
                                 ],
                               ),
+                              SizedBox(width: 25,),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Dosa', style: Style.smallHead),
+                                  Text('Dosa', style: Style.smallHead1),
                                   const SizedBox(
                                     height: 5,
                                   ),
@@ -497,33 +497,30 @@ class _CartOldState extends State<CartOld> {
                                     width: 130,
                                     child: Row(
                                       children: [
-                                        Container(
-                                          height: height * 0.035,
-                                          decoration: BoxDecoration(
-                                              color: ColorConstant.backgound,
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.circular(12),
-                                                  topLeft: Radius.circular(12))),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text('15% Off'),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   height: height * 0.035,
+                                        //   decoration: BoxDecoration(
+                                        //       color: ColorConstant.backgound,
+                                        //       borderRadius: BorderRadius.only(
+                                        //           bottomRight: Radius.circular(12),
+                                        //           topLeft: Radius.circular(12))),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.all(4.0),
+                                        //     child: Text('15% Off'),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           width: 10,
                                         ),
-                                        Image(
-                                            image:
-                                                AssetImage('assets/images/bag.png')),
                                         Text(
-                                          '80',
+                                          '₹ 80',
                                           style: TextStyle(
                                               decoration: TextDecoration.lineThrough),
                                         ),
                                         SizedBox(
                                           width: 8,
                                         ),
-                                        Text('50'),
+                                        Text('50',style:TextStyle(fontWeight: FontWeight.w500)),
                                       ],
                                     ),
                                   )
@@ -600,13 +597,13 @@ class _CartOldState extends State<CartOld> {
                             ),
                           ),
                           ButtonWidget(
-                            onPressed: () {
-                              show();
-                            },height: height*0.06,
+                            height: height*0.06,
                             width: width * 0.4,
                             text: 'Checkout',
                             backgroundColor: ColorConstant.backgound,
-                            textColor: ColorConstant.white,
+                            textColor: ColorConstant.white, onPressed: (){
+                              Get.to(Checkout());
+                            },
                           ),
                         ],
                       ),

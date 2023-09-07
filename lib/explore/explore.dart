@@ -7,7 +7,6 @@ import 'package:newfigma/core/constant/color.dart';
 import 'package:newfigma/home/controller/homeController.dart';
 import 'package:newfigma/search/search.dart';
 import 'package:newfigma/widgets/boxTextfield.dart';
-import '../home/controller/productController.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -18,18 +17,10 @@ class Explore extends StatefulWidget {
 
 class _ExploreState extends State<Explore> {
   HomeController hc = HomeController();
-  List<ColorModel> colors=[
-  ColorModel(backgorundColor: ColorConstant.extralightGreen, borderColor: ColorConstant.lightGreen),
-  ColorModel(backgorundColor: ColorConstant.extralightOrange, borderColor: ColorConstant.lightOrange),
-
-  ];
+ List<ColorModel> colors = [];
+  late int Function() generateRandom;
+  
  
-int Function() generateRandom=(){
-Random random=new Random();
-int min =0,max=2;
-int num =min+random.nextInt(max-min);
-return num;
-};
 
 
    List<Map<String, dynamic>> categoryData1= [];
@@ -39,13 +30,30 @@ return num;
       categoryData1 = categoryData;
     });
   }
-  @override
-  void initState() {
-    // TODO: implement initState
+ void initState() {
     super.initState();
     fetchCategoryData();
     hc.getproduct();
+   colors = [
+      ColorModel(
+        backgorundColor: ColorConstant.extralightGreen,
+        borderColor: ColorConstant.lightGreen,
+      ),
+      ColorModel(
+        backgorundColor: ColorConstant.extralightOrange,
+        borderColor: ColorConstant.lightOrange,
+      ),
+    ];
+
+    generateRandom = () {
+      Random random = Random();
+      int min = 0, max = colors.length - 1;
+      int num = min + random.nextInt(max - min + 1);
+      return num;
+    };
+
   }
+
   @override
 Widget build(BuildContext context) {
   
@@ -80,6 +88,8 @@ Widget build(BuildContext context) {
               spacing: 12.0, 
               runSpacing: 12.0, 
               children: List.generate(categoryData1.length, (index) {
+                 int randomIndex = generateRandom();
+                  ColorModel selectedColor = colors[randomIndex];
                 return GestureDetector(
                   onTap: () {
                     Get.to(Search());
@@ -89,10 +99,10 @@ Widget build(BuildContext context) {
                     height: 180,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: colors[generateRandom()].borderColor,
+                        color: selectedColor.borderColor,
                       ),
                       borderRadius: BorderRadius.circular(12),
-                      color:colors[generateRandom()].backgorundColor,
+                       color: selectedColor.backgorundColor,
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),

@@ -1,91 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newfigma/core/constant/color.dart';
+import 'package:newfigma/widgets/boxTextfield.dart';
+import 'package:newfigma/widgets/button.dart';
+
+import '../MyDetails_screen/controller/myProfile_controller.dart';
 
 class ChangeDetailsPage extends StatefulWidget {
+  const ChangeDetailsPage({super.key});
+
   @override
-  _ChangeDetailsPageState createState() => _ChangeDetailsPageState();
+  State<ChangeDetailsPage> createState() => _ChangeDetailsPageState();
 }
 
 class _ChangeDetailsPageState extends State<ChangeDetailsPage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _numberController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    
-    _nameController.text = ""; 
-    _emailController.text = ""; 
-    _numberController.text = ""; 
-    _usernameController.text = ""; 
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _numberController.dispose();
-    _usernameController.dispose();
-    super.dispose();
-  }
-
-  void _saveChanges() {
-    
-    String newName = _nameController.text;
-    String newEmail = _emailController.text;
-    String newNumber = _numberController.text;
-    String newUsername = _usernameController.text;
-
-   
-    Future.delayed(Duration(seconds: 2), () {
-      print("Updated user details: Name: $newName, Email: $newEmail, Number: $newNumber, Username: $newUsername");
-      Navigator.pop(context); 
-    });
-  }
+  double width=Get.width;
+  double height=Get.height;
+  ProfileController pc = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: ColorConstant.white,
-       leading: BackButton(color: Colors.black),
-       elevation:3,
-        title: Text("Change Details",style: TextStyle(color: ColorConstant.black),),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: "Name",labelStyle: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: "Email",labelStyle: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: _numberController,
-              decoration: InputDecoration(labelText: "Number",labelStyle: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: _usernameController,
-              decoration: InputDecoration(labelText: "Username",labelStyle: TextStyle(fontSize: 18)),
-            ),
-            SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: _saveChanges,
-              child: Text("Save Changes"),
-            ),
-          ],
-        ),
-      ),
+    appBar: AppBar(
+    backgroundColor: Colors.white,
+    leading: BackButton(color: Colors.black,),
+    elevation: 0,
+    title: Text('Update Profile',style: TextStyle(color: ColorConstant.black),),
+    ),
+   body: SafeArea(child: 
+   Padding(
+     padding: const EdgeInsets.all(12.0),
+     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(child: BoxTextField(hint: '${pc.profileModel.value.customerWithUrl?.name}',label: 'Name',)),
+        Center(child: BoxTextField(hint: '${pc.profileModel.value.customerWithUrl?.email}',label: 'Email',)),
+        Center(child: BoxTextField(hint: '${pc.profileModel.value.customerWithUrl?.mobile}',label: 'Mobile Number',)),
+        Center(child: BoxTextField(hint: '${pc.profileModel.value.customerWithUrl?.username}',label: 'User Name',)),
+       Center(child: BoxTextField(hint: 'XXXXXXXX',label: 'Password',)),
+       SizedBox(height: 50,),
+       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+         children: [
+           ButtonWidget(onPressed: (){}, text: 'Change', backgroundColor: ColorConstant.blue, textColor: ColorConstant.white,width: width*0.4,),
+           ButtonWidget(onPressed: (){}, text: 'Save', backgroundColor: ColorConstant.blue, textColor: ColorConstant.white,width: width*0.4,),
+        ],
+       ),
+       
+      ],
+     ),
+   )),
+   backgroundColor: Colors.white,
     );
   }
 }

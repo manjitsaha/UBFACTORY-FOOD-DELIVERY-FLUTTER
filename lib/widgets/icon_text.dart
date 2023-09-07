@@ -10,7 +10,7 @@ class IconTextWidget extends StatelessWidget {
   final double iconSize;
   final TextStyle textStyle;
   final MainAxisAlignment mainAxisAlignment;
-  final ImageProvider? image; // Optional image variable
+  final ImageProvider? image; 
 
   const IconTextWidget({
     super.key,
@@ -21,14 +21,13 @@ class IconTextWidget extends StatelessWidget {
     this.textStyle = const TextStyle(fontSize: 16, color: Color.fromARGB(255, 43, 42, 42)),
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.icon1,
-    this.image, // Optional image
+    this.image, 
   });
 
   @override
   Widget build(BuildContext context) {
     double height= Get.height;
     return Material(
-      elevation: 3,
       child: Container(
         height: height*0.05,
         child: Padding(
@@ -54,7 +53,7 @@ class IconTextWidget extends StatelessWidget {
                   const SizedBox(width: 15,),
                   Text(
                     text,
-                    style: TextStyle(fontSize: 15, color: ColorConstant.black),
+                    style: TextStyle(fontSize: 15, color: ColorConstant.black,fontFamily: 'wsregular'),
                   ),
                 ],
               ),

@@ -48,7 +48,7 @@ class _BeveragesState extends State<Beverages> {
                       const Text('355ml, Price'),
                       const SizedBox(height: 40,),
                      Row(children: [
-                      const Image(image: AssetImage('assets/images/bag.png')),
+                      const Image(image: AssetImage('assets/images/Rupee.png')),
                       const Text('50'),
                       const SizedBox(width: 50,),
                       Container(

@@ -172,13 +172,13 @@ class _ProfileOrderState extends State<ProfileOrder> {
                         children: [
                           Text('Delivered on Mon Aug 28',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w400)),
+                                 fontSize: 16, fontWeight: FontWeight.w400)),
                           SizedBox(
                             height: 8,
                           ),
                           Text('Dosa Batter',
                               style: TextStyle(
-                                  fontSize: 18,
+                                 fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: ColorConstant.textGrey)),
                           SizedBox(
@@ -229,13 +229,13 @@ class _ProfileOrderState extends State<ProfileOrder> {
                         children: [
                           Text('Delivered on Aug 2',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w400)),
+                                 fontSize: 16, fontWeight: FontWeight.w400)),
                           SizedBox(
                             height: 8,
                           ),
                           Text('Fry Pooris',
                               style: TextStyle(
-                                  fontSize: 18,
+                                 fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: ColorConstant.textGrey)),
                           SizedBox(
@@ -286,13 +286,13 @@ class _ProfileOrderState extends State<ProfileOrder> {
                         children: [
                           Text('Delivered on Jul 28',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w400)),
+                                 fontSize: 16, fontWeight: FontWeight.w400)),
                           SizedBox(
                             height: 8,
                           ),
                           Text('Pasta',
                               style: TextStyle(
-                                  fontSize: 18,
+                                 fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: ColorConstant.textGrey)),
                           SizedBox(

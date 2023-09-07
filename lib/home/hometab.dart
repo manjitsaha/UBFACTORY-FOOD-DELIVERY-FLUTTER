@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newfigma/cart/cart.dart';
 import 'package:newfigma/cartold/cartOld.dart';
 import 'package:newfigma/explore/explore.dart';
 import 'package:newfigma/favourite/favourite.dart';
@@ -33,23 +32,21 @@ class _TabHomeState extends State<TabHome> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children:  [
-                  HomeScreen(),
-                  Explore(),
-                 CartOld(),
-                  Favourite(),
-                  Profile()
-                ],
-              ),
+      body: Column(
+        children: [
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children:  [
+                HomeScreen(),
+                Explore(),
+               CartOld(),
+                Favourite(),
+                Profile()
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

@@ -32,7 +32,7 @@ class InfoCheckout extends StatelessWidget {
               text2!,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             ),
-          if (image != null || text2 != null) 
+          if (image != null ) 
             Icon(Icons.arrow_forward_ios, size: 14),
         ],
       ),

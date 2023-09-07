@@ -97,7 +97,7 @@ var _uemail;
                   onTap: (){
                     Get.to(ProfileDeliveryAddress());
                   },
-                child: IconTextWidget(text: 'Delivery Address', icon: Icons.arrow_forward_ios, icon1: Icons.pin_drop_outlined,)),
+                child: IconTextWidget(text: 'Delivery Address', icon: Icons.arrow_forward_ios,image: AssetImage('assets/images/pin.png'),)),
                 const SizedBox(height: 5,),
                 const Divider(thickness: 1,),
                 const SizedBox(height: 5,),
@@ -105,7 +105,7 @@ var _uemail;
                 onTap: (){
                   Get.to(PaymentMethod());
                 },
-                child: IconTextWidget(text: 'Payment Methods', icon: Icons.arrow_forward_ios, icon1: Icons.credit_card,)),
+                child: IconTextWidget(text: 'Payment Methods', icon: Icons.arrow_forward_ios, image: AssetImage('assets/images/pay.png'))),
                 const SizedBox(height: 5,),
                 const Divider(thickness: 1,),
                 const SizedBox(height: 5,),
@@ -113,7 +113,7 @@ var _uemail;
                 onTap: (){
                   Get.to(PromoCode());
                 },
-                child: IconTextWidget(text: 'Promo Code', icon: Icons.arrow_forward_ios, icon1: Icons.local_offer,)),
+                child: IconTextWidget(text: 'Promo Code', icon: Icons.arrow_forward_ios, image: AssetImage('assets/images/code.png'))),
                 const SizedBox(height: 5,),
                 const Divider(thickness: 1,),
                 const SizedBox(height: 5,),
@@ -129,7 +129,7 @@ var _uemail;
                 onTap: () {
                   Get.to(const Subscription());
                 },
-                child: const IconTextWidget(text: 'Subscription', icon: Icons.arrow_forward_ios, icon1: Icons.subscriptions_outlined,)),
+                child: const IconTextWidget(text: 'Subscription', icon: Icons.arrow_forward_ios, image: AssetImage('assets/images/subscription.png'))),
                 const SizedBox(height: 5,),
                 const Divider(thickness: 1,),
                 const SizedBox(height: 5,),

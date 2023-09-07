@@ -49,62 +49,84 @@ final rxRequestStatus = Status.LOADING.obs;
     });
   }
 
-  Future<void> addToCart(BuildContext context, String productId, String sizeId,
-      int quantity) async {
-    try {
+ Future<void> addToCart(BuildContext context, String productId, String sizeId, int quantity) async {
+  try {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child:CircularProgressIndicator()
+        );
+      },
+    );
+
+    SharedPreferences token = await SharedPreferences.getInstance();
+    var userId = token.getString('newtoken');
+
+    var url = Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.addToCart);
+    var headers = {
+      'Authorization': 'Bearer $userId',
+      'Content-Type': 'application/json',
+    };
+
+    var body = {
+      'productId': productId,
+      'sizeId': sizeId,
+      'quantity': quantity,
+    };
+
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: json.encode(body),
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.pop(context); 
       showDialog(
-          context: context,
-          builder: (context) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+        context: context,
+        builder: (BuildContext context) {
+           Future.delayed(Duration(seconds: 1), () {
+            Navigator.of(context).pop(); 
           });
-      SharedPreferences token = await SharedPreferences.getInstance();
-      var userId = token.getString('newtoken');
-
-      var url = Uri.parse(
-          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.addToCart);
-      var headers = {
-        'Authorization': 'Bearer $userId',
-        'Content-Type': 'application/json',
-      };
-
-      var body = {
-        'productId': productId,
-        'sizeId': sizeId,
-        'quantity': quantity,
-      };
-
-      http.Response response = await http.post(
-        url,
-        headers: headers,
-        body: json.encode(body),
+          return AlertDialog(
+            
+            title: Text('Item Added to Cart'),
+            content: Text('The item has been added to your cart.'),
+            // actions: <Widget>[
+            //   TextButton(
+            //     child: Text('OK'),
+            //     onPressed: () {
+            //       Navigator.pop(context); 
+            //     },
+            //   ),
+            // ],
+          );
+        },
       );
-
-      if (response.statusCode == 200) {
-        final snackBar = SnackBar(
-          content: Text('Item added to cart'),
-          duration: Duration(seconds: 2),
-        );
-        ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
-        cartItems.add(body);
-        print(response.body);
-        print(cartItems);
-      } else {
-        final snackBar = SnackBar(
-          content: Text('failed to add to cart'),
-          duration: Duration(seconds: 2),
-        );
-        ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
-        print(response.body);
-        print('Failed to add item to cart');
-      }
-    } catch (e) {
-      print('Error adding item to cart: $e');
+      cartItems.add(body);
+      print(response.body);
+      print(cartItems);
+    } else {
+      Navigator.pop(context); // Close the "Adding Item to Cart" dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Failed to Add Item to Cart'),
+            content: Text('Sorry, we could not add the item to your cart.'),
+           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          );
+        },
+      );
+      print(response.body);
+      print('Failed to add item to cart');
     }
-    Get.back();
+  } catch (e) {
+    print('Error adding item to cart: $e');
   }
- 
+}
+
   //remove cart
    Future<void> removeFromCart(String itemId) async {
     try {

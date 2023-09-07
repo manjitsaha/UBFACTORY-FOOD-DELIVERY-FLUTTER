@@ -33,13 +33,22 @@ class RegistrationController extends GetxController{
   print('Response Status Code: ${response.statusCode}');
 print('Response Body: ${response.body}');
   if(response.statusCode == 201){
-    showDialog(context: Get.context!, builder: (context){
-      return const SimpleDialog(
-        title: Text('Successful'),
-        contentPadding: EdgeInsets.all(20),
-        children: [Text('User Registered Succefully')]
+    showDialog(
+        context: Get.context!,
+        builder: (context) {
+          // Show the dialog with a delay of 2 seconds (adjust as needed)
+          Future.delayed(Duration(seconds: 1), () {
+            Navigator.of(context).pop(); // Close the dialog
+            Get.to(TabHome()); // Navigate to TabHome
+          });
+
+          return const SimpleDialog(
+            title: Text('Successful'),
+            contentPadding: EdgeInsets.all(20),
+            children: [Text('User Registered Successfully')],
+          );
+        },
       );
-    }); Get.to(TabHome());
     print(response.body);
     
   }

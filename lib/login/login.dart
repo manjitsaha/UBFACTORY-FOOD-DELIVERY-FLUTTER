@@ -19,18 +19,20 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   bool _isPasswordVisible = false;
-  final RxBool isLoading = false.obs;
+  LoginController loginController = LoginController();
 
-void _togglePasswordVisibility() {
-  setState(() {
-    _isPasswordVisible = !_isPasswordVisible;
-  });
-}
-  LoginController loginController =LoginController();
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body: Stack(
+        children: [
+          Padding(
         padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),
         child: SingleChildScrollView(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,6 +101,19 @@ void _togglePasswordVisibility() {
             ],
           ),
         ),
+      ),
+    
+           // Obx(() {
+          //   return loginController.isLoading.value
+          //       ? Container(
+          //           color: Colors.black.withOpacity(0.5),
+          //           child: Center(
+          //             child: CircularProgressIndicator(),
+          //           ),
+          //         )
+          //       : SizedBox.shrink();
+          // }),
+        ],
       ),
     );
   }
